@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.app.Activity;
 
 import org.altbeacon.beacon.Beacon;
 import org.altbeacon.beacon.BeaconConsumer;
@@ -79,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Camera camera = cameraList.get(position);
+                Intent myIntent = new Intent(MainActivity.this, CameraDetailActivity.class);
+                //myIntent.putExtra("camera", new GSON); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
             }
         });
     }

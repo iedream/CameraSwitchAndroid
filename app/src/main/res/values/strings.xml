@@ -2,4 +2,5 @@
     <string name="app_name">CameraSwitchAndroid</string>
     <string name="title_activity_beacon_scanning">BeaconScanningActivity</string>
     <string name="title_activity_beacon_detection_manager">BeaconDetectionManager</string>
+    <string name="title_activity_camera_detail">CameraDetailActivity</string>
 </resources>
