@@ -40,6 +40,7 @@ public class CameraDetailActivity extends Activity {
             @Override
             public void onClick(View view) {
                 camera.isOn = !camera.isOn;
+                cameraUpdateActivity.updateCameraState(camera);
             }
         });
 
@@ -57,6 +58,7 @@ public class CameraDetailActivity extends Activity {
                 } else if (R.id.distantRadioButton == i) {
                     camera.proximity = Proximity.Distant;
                 }
+                cameraUpdateActivity.updateProximitySetting(camera);
             }
         });
     }

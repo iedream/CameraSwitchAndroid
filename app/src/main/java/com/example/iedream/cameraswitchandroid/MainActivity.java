@@ -38,8 +38,10 @@ import com.nestlabs.sdk.Structure;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-public class MainActivity extends AppCompatActivity implements BeaconConsumer {
+public class MainActivity extends AppCompatActivity implements BeaconConsumer, CameraUpdateActivity, GetCameraProperty {
 
     private ListView cameraListView;
     private ArrayList<CameraModel> cameraList = new ArrayList<CameraModel>();
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     NestAutorizationManager nestAutorizationManager;
     NestCameraManager nestCameraManager;
+    NestStructureManager nestStructureManager;
     StoringManager storingManager;
 
     @Override
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
             storingManager = new StoringManager(this);
             nestCameraManager = new NestCameraManager(nest);
+            nestStructureManager = new NestStructureManager(nest);
             nestAutorizationManager = new NestAutorizationManager(nest, storingManager, this);
         }
 
@@ -153,5 +157,29 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
        nestAutorizationManager.authFlowCompleted(requestCode, resultCode, intent);
+    }
+
+    public void updateCameraState(CameraModel camera) {
+        nestCameraManager.setCameraState(camera);
+    }
+
+    public void updateProximitySetting(CameraModel camera) {
+        storingManager.writeProximitySetting(camera);
+    }
+
+    public String getCameraAway(String structureId) {
+        return nestStructureManager.getAwayForStructureId(structureId);
+    }
+
+    public Proximity getCameraProximity(String cameraId) {
+        return storingManager.readProximitySettings(cameraId);
+    }
+
+    public Set<String> getCameraBeacons(String cameraId) {
+        return storingManager.readCameraBeaconsSetting(cameraId);
+    }
+
+    public void cameraUpdated(ArrayList<CameraModel> newCameraList) {
+        cameraList = newCameraList;
     }
 }
