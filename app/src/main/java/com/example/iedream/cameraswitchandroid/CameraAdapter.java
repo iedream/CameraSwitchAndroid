@@ -14,9 +14,9 @@ import com.nestlabs.sdk.Camera;
 public class CameraAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
-    private ArrayList<Camera> mDataSource;
+    private ArrayList<CameraModel> mDataSource;
 
-    public CameraAdapter(Context context, ArrayList<Camera> items) {
+    public CameraAdapter(Context context, ArrayList<CameraModel> items) {
         mContext = context;
         mDataSource = items;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

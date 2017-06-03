@@ -42,7 +42,7 @@ import java.util.Iterator;
 public class MainActivity extends AppCompatActivity implements BeaconConsumer {
 
     private ListView cameraListView;
-    private ArrayList<Camera> cameraList = new ArrayList<Camera>();
+    private ArrayList<CameraModel> cameraList = new ArrayList<CameraModel>();
     boolean initAlready = false;
     BeaconManager beaconManager;
 
@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer {
         cameraListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Camera camera = cameraList.get(position);
+                CameraModel camera = cameraList.get(position);
                 Intent myIntent = new Intent(MainActivity.this, CameraDetailActivity.class);
-                //myIntent.putExtra("camera", new GSON); //Optional parameters
+                myIntent.putExtra("camera", camera); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
             }
         });
