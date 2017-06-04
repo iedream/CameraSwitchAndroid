@@ -8,4 +8,5 @@ public interface CameraUpdateActivity
 {
     public void updateCameraState(CameraModel camera);
     public void updateProximitySetting(CameraModel camera);
+    public void updateBeaconsSetting(CameraModel camera);
 }

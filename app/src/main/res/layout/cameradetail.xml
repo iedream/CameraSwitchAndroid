@@ -141,7 +141,7 @@
     </RadioGroup>
 
     <ListView
-        android:id="@+id/listView2"
+        android:id="@+id/beaconTable"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginBottom="20dp"
@@ -153,12 +153,12 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/addBeaconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Widget"
         android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/listView2"
+        app:layout_constraintBottom_toTopOf="@+id/beaconTable"
         android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 

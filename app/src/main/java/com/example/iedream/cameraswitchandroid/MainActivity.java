@@ -182,4 +182,8 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, C
     public void cameraUpdated(ArrayList<CameraModel> newCameraList) {
         cameraList = newCameraList;
     }
+
+    public void updateBeaconsSetting(CameraModel camera) {
+        storingManager.writeCameraBeaconsSetting(camera);
+    }
 }

@@ -44,7 +44,7 @@ public class NestCameraManager {
                     Set <String> cameraBeacons = getCameraProperty.getCameraBeacons(camera.getDeviceId());
                     CameraModel cameraModel = new CameraModel(camera, cameraAway, cameraProximity, cameraBeacons);
                     cameraMap.put(camera.getDeviceId(), cameraModel);
-                    getCameraProperty.cameraUpdated(cameraMap);
+                    getCameraProperty.cameraUpdated(new ArrayList<CameraModel>(cameraMap.values()));
                 }
             }
         });
