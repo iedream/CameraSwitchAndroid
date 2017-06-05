@@ -21,9 +21,11 @@ public class BeaconDetectionManager {
         Set<CameraModel>cameraModels = beaconDetectionManagerInterface.getAllCameraModelForBeaconId(beaconId);
         for (Iterator iterator = cameraModels.iterator(); iterator.hasNext();) {
             CameraModel cameraModel = (CameraModel) iterator.next();
-            Boolean cameraOn = proximityComparator.include(currentProximity, cameraModel.proximity);
-            cameraModel.isOn = cameraOn;
-            beaconDetectionManagerInterface.beaconUpdateCameraState(cameraModel);
+            Boolean cameraOn = !proximityComparator.include(currentProximity, cameraModel.proximity);
+            if (cameraModel.isOn != cameraOn) {
+                cameraModel.isOn = cameraOn;
+                beaconDetectionManagerInterface.beaconUpdateCameraState(cameraModel);
+            }
         }
     }
 }
