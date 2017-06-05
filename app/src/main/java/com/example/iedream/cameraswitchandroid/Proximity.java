@@ -11,11 +11,11 @@ public enum Proximity {
 class ProximityHelper
 {
     public Proximity convertDistanceToProximity(double distance) {
-        if (distance < 2) {
+        if (distance < 0.5) {
             return Proximity.Instant;
-        } else if (distance < 4) {
+        } else if (distance < 2) {
             return Proximity.Close;
-        } else if (distance < 6) {
+        } else if (distance < 5) {
             return Proximity.Medium;
         } else if (distance < 8) {
             return Proximity.Far;
