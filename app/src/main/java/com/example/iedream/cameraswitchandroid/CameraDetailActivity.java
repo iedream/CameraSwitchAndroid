@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.preference.DialogPreference;
 import android.support.annotation.IdRes;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -29,16 +30,17 @@ public class CameraDetailActivity extends Activity {
     TextView stateLabel;
     TextView locationLabel;
     RadioGroup radioGroup;
-    CameraUpdateActivity cameraUpdateActivity;
     Button addBeaconButton;
     ListView beaconTable;
     ArrayList <String> beaconList = new ArrayList<String>();
     AlertDialog.Builder builder;
+    LocalBroadcastManager broadcastManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cameradetail);
+        broadcastManager = LocalBroadcastManager.getInstance(this);
 
         camera = (CameraModel)getIntent().getSerializableExtra("camera");
 
@@ -69,7 +71,9 @@ public class CameraDetailActivity extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 beaconList.add(input.getText().toString());
                 camera.beacons = new HashSet<String>(beaconList);
-                cameraUpdateActivity.updateBeaconsSetting(camera);
+                Intent intent = new Intent("UpdateBeacons");
+                intent.putExtra("camera", camera);
+                broadcastManager.sendBroadcast(intent);
             }
         });
 
@@ -84,7 +88,9 @@ public class CameraDetailActivity extends Activity {
             @Override
             public void onClick(View view) {
                 camera.isOn = !camera.isOn;
-                cameraUpdateActivity.updateCameraState(camera);
+                Intent intent = new Intent("UpdateCamera");
+                intent.putExtra("camera", camera);
+                broadcastManager.sendBroadcast(intent);
             }
         });
 
@@ -109,7 +115,9 @@ public class CameraDetailActivity extends Activity {
                 } else if (R.id.distantRadioButton == i) {
                     camera.proximity = Proximity.Distant;
                 }
-                cameraUpdateActivity.updateProximitySetting(camera);
+                Intent intent = new Intent("UpdateProximity");
+                intent.putExtra("camera", camera);
+                broadcastManager.sendBroadcast(intent);
             }
         });
     }

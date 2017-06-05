@@ -3,51 +3,42 @@ package com.example.iedream.cameraswitchandroid;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.RemoteException;
-import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.app.Activity;
 
 import org.altbeacon.beacon.Beacon;
 import org.altbeacon.beacon.BeaconConsumer;
 import org.altbeacon.beacon.BeaconManager;
-import org.altbeacon.beacon.BeaconTransmitter;
-import org.altbeacon.beacon.Identifier;
 import org.altbeacon.beacon.MonitorNotifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
 import org.altbeacon.beacon.BeaconParser;
 
-import com.nestlabs.sdk.NestAPI;
-import com.nestlabs.sdk.NestToken;
-import com.nestlabs.sdk.NestException;
-import com.nestlabs.sdk.NestListener;
 import com.nestlabs.sdk.Camera;
-import com.nestlabs.sdk.Structure;
+import com.nestlabs.sdk.NestAPI;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity implements BeaconConsumer, CameraUpdateActivity, GetCameraProperty {
+public class MainActivity extends AppCompatActivity implements BeaconConsumer, GetCameraProperty, BeaconDetectionManagerInterface, NestAuthorizationInterface{
 
     private ListView cameraListView;
     private ArrayList<CameraModel> cameraList = new ArrayList<CameraModel>();
     boolean initAlready = false;
+    LocalBroadcastManager broadcastManager;
+
     BeaconManager beaconManager;
 
+    BeaconDetectionManager beaconDetectionManager;
     NestAutorizationManager nestAutorizationManager;
     NestCameraManager nestCameraManager;
     NestStructureManager nestStructureManager;
@@ -57,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        broadcastManager = LocalBroadcastManager.getInstance(this);
 
         cameraListView = (ListView) findViewById(R.id.camera_listview);
         CameraAdapter adapter = new CameraAdapter(this, cameraList);
@@ -72,13 +64,23 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, C
                     setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));
             beaconManager.bind(this);
 
+            beaconDetectionManager = new BeaconDetectionManager();
+            beaconDetectionManager.beaconDetectionManagerInterface = this;
+
             storingManager = new StoringManager(this);
+
             nestCameraManager = new NestCameraManager(nest);
+            nestCameraManager.getCameraProperty = this;
+
             nestStructureManager = new NestStructureManager(nest);
+
             nestAutorizationManager = new NestAutorizationManager(nest, storingManager, this);
+            nestAutorizationManager.nestAuthorizationInterface = this;
         }
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(cameraListenerReceiver, new IntentFilter("StartListeningCamera"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(cameraUpdateReceiver, new IntentFilter("UpdateCamera"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(beaconsUpdateReceiver, new IntentFilter("UpdateBeacons"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(proximityUpdateReceiver, new IntentFilter("UpdateProximity"));
 
         cameraListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -97,10 +99,27 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, C
         beaconManager.unbind(this);
     }
 
-    private BroadcastReceiver cameraListenerReceiver = new BroadcastReceiver() {
+    private BroadcastReceiver cameraUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            nestCameraManager.listenToCamera();
+            CameraModel camera = (CameraModel)intent.getSerializableExtra("camera");
+            nestCameraManager.setCameraState(camera);
+        }
+    };
+
+    private BroadcastReceiver beaconsUpdateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            CameraModel camera = (CameraModel)intent.getSerializableExtra("camera");
+            storingManager.writeCameraBeaconsSetting(camera);
+        }
+    };
+
+    private BroadcastReceiver proximityUpdateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            CameraModel camera = (CameraModel)intent.getSerializableExtra("camera");
+            storingManager.writeProximitySetting(camera);
         }
     };
 
@@ -142,13 +161,15 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, C
             public void didRangeBeaconsInRegion(Collection<Beacon> collection, Region region) {
                 for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
                     Beacon beacon = (Beacon) iterator.next();
+                    String id = beacon.getId1().toString();
                     double distance = beacon.getDistance();
+                    beaconDetectionManager.beaconDetected(id, distance);
                 }
             }
         });
 
         try {
-            beaconManager.startMonitoringBeaconsInRegion(new Region("8492E75F-4FD6-469D-B132-043FE94921D8", null, null, null));
+            beaconManager.startMonitoringBeaconsInRegion(new Region("beacon", null, null, null));
         } catch (RemoteException e) {
 
         }
@@ -157,14 +178,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, C
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
        nestAutorizationManager.authFlowCompleted(requestCode, resultCode, intent);
-    }
-
-    public void updateCameraState(CameraModel camera) {
-        nestCameraManager.setCameraState(camera);
-    }
-
-    public void updateProximitySetting(CameraModel camera) {
-        storingManager.writeProximitySetting(camera);
     }
 
     public String getCameraAway(String structureId) {
@@ -183,7 +196,25 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, C
         cameraList = newCameraList;
     }
 
-    public void updateBeaconsSetting(CameraModel camera) {
-        storingManager.writeCameraBeaconsSetting(camera);
+    public Set<CameraModel> getAllCameraModelForBeaconId(String beaconId) {
+        Set<CameraModel> allCameras = new HashSet<CameraModel>();
+        for (Iterator iterator = cameraList.iterator(); iterator.hasNext();) {
+            CameraModel cameraModel = (CameraModel) iterator.next();
+            for (Iterator beaconIterator = cameraModel.beacons.iterator(); iterator.hasNext();) {
+                Set<String> beacons = (Set<String>)cameraModel.beacons;
+                if (beacons.contains(beaconId)) {
+                    allCameras.add(cameraModel);
+                }
+            }
+        }
+        return allCameras;
+    }
+
+    public void beaconUpdateCameraState(CameraModel cameraModel) {
+        nestCameraManager.setCameraState(cameraModel);
+    }
+
+    public void authorizationComplete() {
+        nestCameraManager.listenToCamera();
     }
 }

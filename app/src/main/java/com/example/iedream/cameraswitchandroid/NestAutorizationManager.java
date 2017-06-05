@@ -2,7 +2,6 @@ package com.example.iedream.cameraswitchandroid;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v4.content.LocalBroadcastManager;
 
 
 import com.nestlabs.sdk.NestAPI;
@@ -18,14 +17,13 @@ public class NestAutorizationManager extends AppCompatActivity{
     NestAPI nest;
     int tokenCode = 123;
     StoringManager storingManager;
-    LocalBroadcastManager broadcastManager;
+    NestAuthorizationInterface nestAuthorizationInterface;
     AppCompatActivity context;
 
     public NestAutorizationManager(NestAPI nestAPI, StoringManager newStoringManager, AppCompatActivity mainContext) {
         nest = nestAPI;
         storingManager = newStoringManager;
         context = mainContext;
-        broadcastManager = LocalBroadcastManager.getInstance(context);
 
         String clientID = "85165356-5b33-4682-9979-c59145d68c55";
         String clientSecret = "YfbUUz0rbf8gkHis0vziATz2q";
@@ -53,8 +51,7 @@ public class NestAutorizationManager extends AppCompatActivity{
         nest.authWithToken(token, new NestListener.AuthListener() {
             @Override
             public void onAuthSuccess(){
-                Intent intent = new Intent("StartListeningCamera");
-                broadcastManager.sendBroadcast(intent);
+                nestAuthorizationInterface.authorizationComplete();
             }
 
             @Override

@@ -8,6 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import com.nestlabs.sdk.Camera;
 import com.nestlabs.sdk.NestToken;
 
+import org.altbeacon.beacon.Beacon;
+
+import java.lang.reflect.Array;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
@@ -44,7 +48,7 @@ public class StoringManager {
 
     public Proximity readProximitySettings(String cameraId) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences("CameraSwitch",0);
-        int proximityInt = settings.getInt(cameraId, 0);
+        int proximityInt = settings.getInt(cameraId + "/proximity", 0);
         Proximity proximity = Proximity.values()[proximityInt];
         return proximity;
     }
@@ -59,7 +63,7 @@ public class StoringManager {
 
     public Set<String> readCameraBeaconsSetting(String cameraId) {
         SharedPreferences settings = context.getApplicationContext().getSharedPreferences("CameraSwitch",0);
-        Set <String> beacons = settings.getStringSet(cameraId, null);
+        Set <String> beacons = settings.getStringSet(cameraId + "/beacons", null);
         return beacons;
     }
 
