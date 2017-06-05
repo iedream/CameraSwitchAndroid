@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import com.nestlabs.sdk.Camera;
 
@@ -42,8 +43,8 @@ public class CameraAdapter extends BaseAdapter {
         // Get view for row item
         View rowView = mInflater.inflate(R.layout.camera_list, parent, false);
         TextView cameraNameView = (TextView) rowView.findViewById(R.id.camera_name);
-        Camera camera = (Camera) getItem(position);
-        cameraNameView.setText(camera.getName());
+        CameraModel camera = (CameraModel) getItem(position);
+        cameraNameView.setText(camera.name);
         return rowView;
     }
 }
