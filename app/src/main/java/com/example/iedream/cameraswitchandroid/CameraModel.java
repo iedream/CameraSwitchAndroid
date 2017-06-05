@@ -12,6 +12,7 @@ import java.util.Set;
 public class CameraModel implements Serializable {
     String name;
     String id;
+    String structureId;
     boolean isOn;
     boolean isOnline;
     String location;
@@ -23,6 +24,7 @@ public class CameraModel implements Serializable {
         isOnline = newCamera.isOnline();
         isOn = newCamera.isStreaming();
         id = newCamera.getDeviceId();
+        structureId = newCamera.getStructureId();
         location = newLocation;
         proximity = newProximity;
         beacons = newBeacons;

@@ -32,9 +32,11 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity implements BeaconConsumer, GetCameraProperty, BeaconDetectionManagerInterface, NestAuthorizationInterface{
 
     private ListView cameraListView;
+    CameraAdapter adapter;
     private ArrayList<CameraModel> cameraList = new ArrayList<CameraModel>();
     boolean initAlready = false;
     LocalBroadcastManager broadcastManager;
+    String currentSelectedCameraId;
 
     BeaconManager beaconManager;
 
@@ -51,9 +53,6 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
         broadcastManager = LocalBroadcastManager.getInstance(this);
 
         cameraListView = (ListView) findViewById(R.id.camera_listview);
-        CameraAdapter adapter = new CameraAdapter(this, cameraList);
-        cameraListView.setAdapter(adapter);
-
 
         if (!initAlready) {
             initAlready = true;
@@ -73,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
             nestCameraManager.getCameraProperty = this;
 
             nestStructureManager = new NestStructureManager(nest);
+            nestStructureManager.cameraInterface = nestCameraManager;
 
             nestAutorizationManager = new NestAutorizationManager(nest, storingManager, this);
             nestAutorizationManager.nestAuthorizationInterface = this;
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 CameraModel camera = cameraList.get(position);
+                currentSelectedCameraId = camera.id;
                 Intent myIntent = new Intent(MainActivity.this, CameraDetailActivity.class);
                 myIntent.putExtra("camera", camera); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
@@ -194,16 +195,39 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
 
     public void cameraUpdated(ArrayList<CameraModel> newCameraList) {
         cameraList = newCameraList;
+        adapter = new CameraAdapter(this, cameraList);
+        cameraListView.setAdapter(adapter);
+        Intent intent = new Intent("CameraUpdated");
+        CameraModel camera = getCameraModel(currentSelectedCameraId);
+        if (camera != null) {
+            intent.putExtra("camera", camera);
+            broadcastManager.sendBroadcast(intent);
+        }
+    }
+
+    private CameraModel getCameraModel(String cameraId) {
+        if (cameraId == null) {
+            return null;
+        }
+        for (Iterator iterator = cameraList.iterator(); iterator.hasNext();) {
+            CameraModel cameraModel = (CameraModel) iterator.next();
+            if (cameraModel.id.equalsIgnoreCase(cameraId)) {
+                return cameraModel;
+            }
+        }
+        return null;
     }
 
     public Set<CameraModel> getAllCameraModelForBeaconId(String beaconId) {
         Set<CameraModel> allCameras = new HashSet<CameraModel>();
         for (Iterator iterator = cameraList.iterator(); iterator.hasNext();) {
             CameraModel cameraModel = (CameraModel) iterator.next();
-            for (Iterator beaconIterator = cameraModel.beacons.iterator(); iterator.hasNext();) {
-                Set<String> beacons = (Set<String>)cameraModel.beacons;
-                if (beacons.contains(beaconId)) {
-                    allCameras.add(cameraModel);
+            if (cameraModel.beacons != null) {
+                for (Iterator beaconIterator = cameraModel.beacons.iterator(); iterator.hasNext();) {
+                    Set<String> beacons = (Set<String>)cameraModel.beacons;
+                    if (beacons.contains(beaconId)) {
+                        allCameras.add(cameraModel);
+                    }
                 }
             }
         }
@@ -215,6 +239,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
     }
 
     public void authorizationComplete() {
+        nestStructureManager.listenToStructure();
         nestCameraManager.listenToCamera();
     }
 }

@@ -13,9 +13,11 @@ import com.nestlabs.sdk.NestException;
 import com.nestlabs.sdk.NestListener;
 import com.nestlabs.sdk.Camera;
 import com.nestlabs.sdk.Structure;
+import com.nestlabs.sdk.DeviceUpdate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -23,7 +25,7 @@ import java.util.Set;
  * Created by iedream on 2017-05-31.
  */
 
-public class NestCameraManager {
+public class NestCameraManager implements NestCameraInterface {
     NestAPI nest;
     Map<String, CameraModel> cameraMap = new HashMap<String, CameraModel>();
     GetCameraProperty getCameraProperty;
@@ -51,5 +53,15 @@ public class NestCameraManager {
 
     public void setCameraState(CameraModel cameraModel) {
         nest.cameras.setIsStreaming(cameraModel.id, cameraModel.isOn);
+    }
+
+    public void homeAwayPropertyUpdated(String homeAway, String structureId) {
+        for (Iterator iterator = cameraMap.values().iterator(); iterator.hasNext();) {
+            CameraModel cameraModel = (CameraModel)iterator.next();
+            if (cameraModel.structureId.equalsIgnoreCase(structureId)) {
+                cameraModel.location = homeAway;
+            }
+        }
+        getCameraProperty.cameraUpdated(new ArrayList<CameraModel>(cameraMap.values()));
     }
 }

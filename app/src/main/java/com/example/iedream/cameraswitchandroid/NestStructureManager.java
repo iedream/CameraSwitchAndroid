@@ -18,17 +18,19 @@ import java.util.HashMap;
 public class NestStructureManager {
     NestAPI nest;
     Map<String, String> map = new HashMap<String, String>();
+    NestCameraInterface cameraInterface;
 
     public NestStructureManager(NestAPI nestAPI) {
         nest = nestAPI;
     }
 
-    private void listenToStructure() {
+    public void listenToStructure() {
         nest.addStructureListener(new NestListener.StructureListener() {
             @Override
             public void onUpdate(@NonNull ArrayList<Structure> structures) {
                 for (Structure structure: structures) {
                     map.put(structure.getStructureId(), structure.getAway());
+                    cameraInterface.homeAwayPropertyUpdated(structure.getAway(), structure.getStructureId());
                 }
             }
         });
