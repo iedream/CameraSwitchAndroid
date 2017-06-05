@@ -1,8 +1,11 @@
 package com.example.iedream.cameraswitchandroid;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.DialogInterface;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.app.Activity;
 import android.preference.DialogPreference;
@@ -50,9 +53,10 @@ public class CameraDetailActivity extends Activity {
         radioGroup = (RadioGroup)findViewById(R.id.ProximityGroup);
         addBeaconButton = (Button)findViewById(R.id.addBeaconButton);
         beaconTable = (ListView)findViewById(R.id.beaconTable);
+        beaconList = new ArrayList<String>(camera.beacons);
 
         onOffSwitch.setChecked(camera.isOn);
-        stateLabel.setText(camera.name);
+        stateLabel.setText(camera.isOnline? "Online":"Offline");
         locationLabel.setText(camera.location);
         setRadioButton(camera.proximity);
 
@@ -62,7 +66,7 @@ public class CameraDetailActivity extends Activity {
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
 
-        ArrayAdapter<String> beaconsAdapter =
+        final ArrayAdapter<String> beaconsAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, beaconList);
         beaconTable.setAdapter(beaconsAdapter);
 
@@ -74,6 +78,13 @@ public class CameraDetailActivity extends Activity {
                 Intent intent = new Intent("UpdateBeacons");
                 intent.putExtra("camera", camera);
                 broadcastManager.sendBroadcast(intent);
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        beaconsAdapter.notifyDataSetChanged();
+                    }
+                });
+
             }
         });
 
@@ -120,7 +131,19 @@ public class CameraDetailActivity extends Activity {
                 broadcastManager.sendBroadcast(intent);
             }
         });
+
+        broadcastManager.registerReceiver(cameraUpdateReceiver, new IntentFilter("CameraUpdated"));
     }
+
+    private BroadcastReceiver cameraUpdateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            CameraModel camera = (CameraModel)intent.getSerializableExtra("camera");
+            onOffSwitch.setChecked(camera.isOn);
+            locationLabel.setText(camera.location);
+            stateLabel.setText(camera.isOnline? "Online":"Offline");
+        }
+    };
 
     private void setRadioButton(Proximity proximity) {
         switch (proximity) {
