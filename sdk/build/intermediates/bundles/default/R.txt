@@ -1,0 +1,3 @@
+int id auth_webview 0x7f030000
+int id webview_progress 0x7f030001
+int layout nest_auth_webview_layout 0x7f020000

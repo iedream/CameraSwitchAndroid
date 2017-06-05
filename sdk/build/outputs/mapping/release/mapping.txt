@@ -1,0 +1,95 @@
+com.nestlabs.sdk.NestAPI -> com.nestlabs.sdk.a:
+    java.lang.String sBaseAccessTokenUrl -> b
+    java.lang.String ACCESS_URL -> a
+    void <clinit>() -> <clinit>
+com.nestlabs.sdk.NestAuthActivity -> com.nestlabs.sdk.NestAuthActivity:
+    okhttp3.MediaType TYPE_JSON -> a
+    com.fasterxml.jackson.databind.ObjectMapper OBJECT_MAPPER -> b
+    android.widget.ProgressBar mProgressBar -> c
+    com.nestlabs.sdk.NestConfig mNestConfig -> d
+    okhttp3.OkHttpClient mHttpClient -> e
+    void <init>() -> <init>
+    void onCreate(android.os.Bundle) -> onCreate
+    void finishWithResult(int,com.nestlabs.sdk.NestToken) -> a
+    android.widget.ProgressBar access$200(com.nestlabs.sdk.NestAuthActivity) -> a
+    com.nestlabs.sdk.NestConfig access$300(com.nestlabs.sdk.NestAuthActivity) -> b
+    void access$400(com.nestlabs.sdk.NestAuthActivity,int,com.nestlabs.sdk.NestToken) -> a
+    okhttp3.MediaType access$500() -> a
+    com.fasterxml.jackson.databind.ObjectMapper access$600() -> b
+    okhttp3.OkHttpClient access$700(com.nestlabs.sdk.NestAuthActivity) -> c
+    void <clinit>() -> <clinit>
+com.nestlabs.sdk.NestAuthActivity$1 -> com.nestlabs.sdk.NestAuthActivity$1:
+com.nestlabs.sdk.NestAuthActivity$ProgressChromeClient -> com.nestlabs.sdk.NestAuthActivity$a:
+    com.nestlabs.sdk.NestAuthActivity this$0 -> a
+    void <init>(com.nestlabs.sdk.NestAuthActivity) -> <init>
+    void onProgressChanged(android.webkit.WebView,int) -> onProgressChanged
+    void <init>(com.nestlabs.sdk.NestAuthActivity,com.nestlabs.sdk.NestAuthActivity$1) -> <init>
+com.nestlabs.sdk.NestAuthActivity$RedirectClient -> com.nestlabs.sdk.NestAuthActivity$b:
+    com.nestlabs.sdk.NestAuthActivity this$0 -> a
+    void <init>(com.nestlabs.sdk.NestAuthActivity) -> <init>
+    boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String) -> shouldOverrideUrlLoading
+    void <init>(com.nestlabs.sdk.NestAuthActivity,com.nestlabs.sdk.NestAuthActivity$1) -> <init>
+com.nestlabs.sdk.NestAuthActivity$RedirectClient$1 -> com.nestlabs.sdk.NestAuthActivity$b$1:
+    com.nestlabs.sdk.NestAuthActivity$RedirectClient this$1 -> a
+    void <init>(com.nestlabs.sdk.NestAuthActivity$RedirectClient) -> <init>
+    void onFailure(okhttp3.Call,java.io.IOException) -> onFailure
+    void onResponse(okhttp3.Call,okhttp3.Response) -> onResponse
+com.nestlabs.sdk.NestConfig -> com.nestlabs.sdk.b:
+    java.lang.String mClientID -> a
+    java.lang.String mStateValue -> b
+    java.lang.String mClientSecret -> c
+    java.lang.String mRedirectURL -> d
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    void <init>(android.os.Parcel) -> <init>
+    java.lang.String getClientID() -> a
+    java.lang.String getStateValue() -> b
+    java.lang.String getClientSecret() -> c
+    java.lang.String getRedirectURL() -> d
+    java.lang.String toString() -> toString
+    boolean equals(java.lang.Object) -> equals
+    int describeContents() -> describeContents
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    void <init>(android.os.Parcel,com.nestlabs.sdk.NestConfig$1) -> <init>
+    void <clinit>() -> <clinit>
+com.nestlabs.sdk.NestConfig$1 -> com.nestlabs.sdk.b$1:
+    void <init>() -> <init>
+    com.nestlabs.sdk.NestConfig createFromParcel(android.os.Parcel) -> a
+    com.nestlabs.sdk.NestConfig[] newArray(int) -> a
+    java.lang.Object[] newArray(int) -> newArray
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+com.nestlabs.sdk.NestToken -> com.nestlabs.sdk.c:
+    java.lang.String mToken -> a
+    long mExpiresInSecs -> b
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    void <init>() -> <init>
+    void <init>(android.os.Parcel) -> <init>
+    int describeContents() -> describeContents
+    java.lang.String toString() -> toString
+    boolean equals(java.lang.Object) -> equals
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    void <init>(android.os.Parcel,com.nestlabs.sdk.NestToken$1) -> <init>
+    void <clinit>() -> <clinit>
+com.nestlabs.sdk.NestToken$1 -> com.nestlabs.sdk.c$1:
+    void <init>() -> <init>
+    com.nestlabs.sdk.NestToken createFromParcel(android.os.Parcel) -> a
+    com.nestlabs.sdk.NestToken[] newArray(int) -> a
+    java.lang.Object[] newArray(int) -> newArray
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+com.nestlabs.sdk.R -> com.nestlabs.sdk.R:
+    void <init>() -> <init>
+com.nestlabs.sdk.R$attr -> com.nestlabs.sdk.R$attr:
+    void <init>() -> <init>
+com.nestlabs.sdk.R$id -> com.nestlabs.sdk.R$id:
+    int auth_webview -> auth_webview
+    int webview_progress -> webview_progress
+    void <init>() -> <init>
+    void <clinit>() -> <clinit>
+com.nestlabs.sdk.R$layout -> com.nestlabs.sdk.R$layout:
+    int nest_auth_webview_layout -> nest_auth_webview_layout
+    void <init>() -> <init>
+    void <clinit>() -> <clinit>
+com.nestlabs.sdk.Utils -> com.nestlabs.sdk.d:
+    com.fasterxml.jackson.databind.ObjectMapper sMapper -> a
+    java.lang.String toString(java.lang.Object) -> a
+    boolean isAnyEmpty(java.lang.String[]) -> a
+    void <clinit>() -> <clinit>

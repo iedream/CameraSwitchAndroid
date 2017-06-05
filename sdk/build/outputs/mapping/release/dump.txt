@@ -1,0 +1,2602 @@
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/a
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x31
+    = public final class com.nestlabs.sdk.a extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 46):
+  + String [https://api.home.nest.com/]
+  + String [oauth2/access_token?code=%s&client_id=%s&client_secret=%s&grant_type=authorization_code]
+  + Class [com/firebase/client/Firebase]
+  + Class [com/firebase/client/Firebase$AuthResultHandler]
+  + Class [com/firebase/client/Firebase$AuthStateListener]
+  + Class [com/nestlabs/sdk/a]
+  + Class [java/lang/Object]
+  + Class [java/lang/StringBuilder]
+  + Class [okhttp3/Request]
+  + Class [okhttp3/Request$Builder]
+  + Fieldref [com/nestlabs/sdk/a.a Ljava/lang/String;]
+  + Fieldref [com/nestlabs/sdk/a.b Ljava/lang/String;]
+  + Methodref [java/lang/StringBuilder.<init> ()V]
+  + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+  + NameAndType [<init> ()V]
+  + NameAndType [a Ljava/lang/String;]
+  + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + NameAndType [b Ljava/lang/String;]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [(Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Utf8 [<clinit>]
+  + Utf8 [<init>]
+  + Utf8 [AuthResultHandler]
+  + Utf8 [AuthStateListener]
+  + Utf8 [Builder]
+  + Utf8 [Code]
+  + Utf8 [InnerClasses]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [a]
+  + Utf8 [append]
+  + Utf8 [b]
+  + Utf8 [com/firebase/client/Firebase]
+  + Utf8 [com/firebase/client/Firebase$AuthResultHandler]
+  + Utf8 [com/firebase/client/Firebase$AuthStateListener]
+  + Utf8 [com/nestlabs/sdk/a]
+  + Utf8 [https://api.home.nest.com/]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/StringBuilder]
+  + Utf8 [oauth2/access_token?code=%s&client_id=%s&client_secret=%s&grant_type=authorization_code]
+  + Utf8 [okhttp3/Request]
+  + Utf8 [okhttp3/Request$Builder]
+  + Utf8 [toString]
+
+Fields (count = 2):
+  + Field:        b Ljava/lang/String;
+    Access flags: 0xa
+      = private static java.lang.String b
+  + Field:        a Ljava/lang/String;
+    Access flags: 0x18
+      = static final java.lang.String a
+
+Methods (count = 1):
+  - Method:       <clinit>()V
+    Access flags: 0x8
+      = static void <clinit>()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 30, locals = 0, stack = 2):
+      [0] ldc #1
+        + String [https://api.home.nest.com/]
+      [2] putstatic #12
+        + Fieldref [com/nestlabs/sdk/a.b Ljava/lang/String;]
+      [5] new #8
+        + Class [java/lang/StringBuilder]
+      [8] dup
+      [9] invokespecial #13
+        + Methodref [java/lang/StringBuilder.<init> ()V]
+      [12] getstatic #12
+        + Fieldref [com/nestlabs/sdk/a.b Ljava/lang/String;]
+      [15] invokevirtual #14
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [18] ldc #2
+        + String [oauth2/access_token?code=%s&client_id=%s&client_secret=%s&grant_type=authorization_code]
+      [20] invokevirtual #14
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [23] invokevirtual #15
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [26] putstatic #11
+        + Fieldref [com/nestlabs/sdk/a.a Ljava/lang/String;]
+      [29] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 3)
+    - InnerClassesInfo:
+      Access flags:  0x609 = public static interface 
+      + Class [com/firebase/client/Firebase$AuthStateListener]
+      + Class [com/firebase/client/Firebase]
+      + Utf8 [AuthStateListener]
+    - InnerClassesInfo:
+      Access flags:  0x9 = public static 
+      + Class [okhttp3/Request$Builder]
+      + Class [okhttp3/Request]
+      + Utf8 [Builder]
+    - InnerClassesInfo:
+      Access flags:  0x609 = public static interface 
+      + Class [com/firebase/client/Firebase$AuthResultHandler]
+      + Class [com/firebase/client/Firebase]
+      + Utf8 [AuthResultHandler]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/NestAuthActivity
+  Superclass:    android/app/Activity
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x21
+    = public class com.nestlabs.sdk.NestAuthActivity extends android.app.Activity
+
+Interfaces (count = 0):
+
+Constant Pool (count = 175):
+  + String [access_token_key]
+  + String [application/json; charset=utf-8]
+  + String [client_metadata_key]
+  + String [https://home.nest.com/login/oauth2?client_id=%s&state=%s]
+  + Class [android/app/Activity]
+  + Class [android/content/Intent]
+  + Class [android/webkit/WebSettings]
+  + Class [android/webkit/WebView]
+  + Class [android/widget/ProgressBar]
+  + Class [com/fasterxml/jackson/databind/ObjectMapper]
+  + Class [com/nestlabs/sdk/NestAuthActivity]
+  + Class [com/nestlabs/sdk/NestAuthActivity$1]
+  + Class [com/nestlabs/sdk/NestAuthActivity$a]
+  + Class [com/nestlabs/sdk/NestAuthActivity$b]
+  + Class [com/nestlabs/sdk/R]
+  + Class [com/nestlabs/sdk/R$id]
+  + Class [com/nestlabs/sdk/R$layout]
+  + Class [com/nestlabs/sdk/b]
+  + Class [com/nestlabs/sdk/d]
+  + Class [java/lang/Object]
+  + Class [java/lang/String]
+  + Class [okhttp3/MediaType]
+  + Class [okhttp3/OkHttpClient]
+  + Fieldref [com/nestlabs/sdk/NestAuthActivity.a Lokhttp3/MediaType;]
+  + Fieldref [com/nestlabs/sdk/NestAuthActivity.b Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + Fieldref [com/nestlabs/sdk/NestAuthActivity.c Landroid/widget/ProgressBar;]
+  + Fieldref [com/nestlabs/sdk/NestAuthActivity.d Lcom/nestlabs/sdk/b;]
+  + Fieldref [com/nestlabs/sdk/NestAuthActivity.e Lokhttp3/OkHttpClient;]
+  + Fieldref [com/nestlabs/sdk/R$id.auth_webview I]
+  + Fieldref [com/nestlabs/sdk/R$id.webview_progress I]
+  + Fieldref [com/nestlabs/sdk/R$layout.nest_auth_webview_layout I]
+  + Methodref [android/app/Activity.<init> ()V]
+  + Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+  + Methodref [android/content/Intent.<init> ()V]
+  + Methodref [android/content/Intent.getParcelableExtra (Ljava/lang/String;)Landroid/os/Parcelable;]
+  + Methodref [android/content/Intent.putExtra (Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;]
+  + Methodref [android/webkit/WebSettings.setJavaScriptEnabled (Z)V]
+  + Methodref [android/webkit/WebView.getSettings ()Landroid/webkit/WebSettings;]
+  + Methodref [android/webkit/WebView.loadUrl (Ljava/lang/String;)V]
+  + Methodref [android/webkit/WebView.setWebChromeClient (Landroid/webkit/WebChromeClient;)V]
+  + Methodref [android/webkit/WebView.setWebViewClient (Landroid/webkit/WebViewClient;)V]
+  + Methodref [com/fasterxml/jackson/databind/ObjectMapper.<init> ()V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.a (ILcom/nestlabs/sdk/c;)V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.findViewById (I)Landroid/view/View;]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.finish ()V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.getIntent ()Landroid/content/Intent;]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.setContentView (I)V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.setResult (ILandroid/content/Intent;)V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity$a.<init> (Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity$b.<init> (Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V]
+  + Methodref [com/nestlabs/sdk/b.a ()Ljava/lang/String;]
+  + Methodref [com/nestlabs/sdk/b.b ()Ljava/lang/String;]
+  + Methodref [com/nestlabs/sdk/b.d ()Ljava/lang/String;]
+  + Methodref [com/nestlabs/sdk/d.a ([Ljava/lang/String;)Z]
+  + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + Methodref [okhttp3/MediaType.parse (Ljava/lang/String;)Lokhttp3/MediaType;]
+  + Methodref [okhttp3/OkHttpClient.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V]
+  + NameAndType [a ()Ljava/lang/String;]
+  + NameAndType [a (ILcom/nestlabs/sdk/c;)V]
+  + NameAndType [a ([Ljava/lang/String;)Z]
+  + NameAndType [a Lokhttp3/MediaType;]
+  + NameAndType [auth_webview I]
+  + NameAndType [b ()Ljava/lang/String;]
+  + NameAndType [b Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + NameAndType [c Landroid/widget/ProgressBar;]
+  + NameAndType [d ()Ljava/lang/String;]
+  + NameAndType [d Lcom/nestlabs/sdk/b;]
+  + NameAndType [e Lokhttp3/OkHttpClient;]
+  + NameAndType [findViewById (I)Landroid/view/View;]
+  + NameAndType [finish ()V]
+  + NameAndType [format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + NameAndType [getIntent ()Landroid/content/Intent;]
+  + NameAndType [getParcelableExtra (Ljava/lang/String;)Landroid/os/Parcelable;]
+  + NameAndType [getSettings ()Landroid/webkit/WebSettings;]
+  + NameAndType [loadUrl (Ljava/lang/String;)V]
+  + NameAndType [nest_auth_webview_layout I]
+  + NameAndType [onCreate (Landroid/os/Bundle;)V]
+  + NameAndType [parse (Ljava/lang/String;)Lokhttp3/MediaType;]
+  + NameAndType [putExtra (Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;]
+  + NameAndType [setContentView (I)V]
+  + NameAndType [setJavaScriptEnabled (Z)V]
+  + NameAndType [setResult (ILandroid/content/Intent;)V]
+  + NameAndType [setWebChromeClient (Landroid/webkit/WebChromeClient;)V]
+  + NameAndType [setWebViewClient (Landroid/webkit/WebViewClient;)V]
+  + NameAndType [webview_progress I]
+  + Utf8 [()Landroid/content/Intent;]
+  + Utf8 [()Landroid/webkit/WebSettings;]
+  + Utf8 [()Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Lokhttp3/MediaType;]
+  + Utf8 [()V]
+  + Utf8 [(I)Landroid/view/View;]
+  + Utf8 [(I)V]
+  + Utf8 [(ILandroid/content/Intent;)V]
+  + Utf8 [(ILcom/nestlabs/sdk/c;)V]
+  + Utf8 [(Landroid/os/Bundle;)V]
+  + Utf8 [(Landroid/webkit/WebChromeClient;)V]
+  + Utf8 [(Landroid/webkit/WebViewClient;)V]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;)Landroid/widget/ProgressBar;]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;)Lcom/nestlabs/sdk/b;]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;)Lokhttp3/OkHttpClient;]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V]
+  + Utf8 [(Ljava/lang/String;)Landroid/os/Parcelable;]
+  + Utf8 [(Ljava/lang/String;)Lokhttp3/MediaType;]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;]
+  + Utf8 [(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + Utf8 [(Z)V]
+  + Utf8 [([Ljava/lang/String;)Z]
+  + Utf8 [<clinit>]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [InnerClasses]
+  + Utf8 [Landroid/annotation/SuppressLint;]
+  + Utf8 [Landroid/widget/ProgressBar;]
+  + Utf8 [Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + Utf8 [Lcom/nestlabs/sdk/b;]
+  + Utf8 [Lokhttp3/MediaType;]
+  + Utf8 [Lokhttp3/OkHttpClient;]
+  + Utf8 [RuntimeInvisibleAnnotations]
+  + Utf8 [SetJavaScriptEnabled]
+  + Utf8 [a]
+  + Utf8 [access_token_key]
+  + Utf8 [android/app/Activity]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/webkit/WebSettings]
+  + Utf8 [android/webkit/WebView]
+  + Utf8 [android/widget/ProgressBar]
+  + Utf8 [application/json; charset=utf-8]
+  + Utf8 [auth_webview]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [client_metadata_key]
+  + Utf8 [com/fasterxml/jackson/databind/ObjectMapper]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$1]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$a]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$b]
+  + Utf8 [com/nestlabs/sdk/R]
+  + Utf8 [com/nestlabs/sdk/R$id]
+  + Utf8 [com/nestlabs/sdk/R$layout]
+  + Utf8 [com/nestlabs/sdk/b]
+  + Utf8 [com/nestlabs/sdk/d]
+  + Utf8 [d]
+  + Utf8 [e]
+  + Utf8 [findViewById]
+  + Utf8 [finish]
+  + Utf8 [format]
+  + Utf8 [getIntent]
+  + Utf8 [getParcelableExtra]
+  + Utf8 [getSettings]
+  + Utf8 [https://home.nest.com/login/oauth2?client_id=%s&state=%s]
+  + Utf8 [id]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
+  + Utf8 [layout]
+  + Utf8 [loadUrl]
+  + Utf8 [nest_auth_webview_layout]
+  + Utf8 [okhttp3/MediaType]
+  + Utf8 [okhttp3/OkHttpClient]
+  + Utf8 [onCreate]
+  + Utf8 [parse]
+  + Utf8 [putExtra]
+  + Utf8 [setContentView]
+  + Utf8 [setJavaScriptEnabled]
+  + Utf8 [setResult]
+  + Utf8 [setWebChromeClient]
+  + Utf8 [setWebViewClient]
+  + Utf8 [value]
+  + Utf8 [webview_progress]
+
+Fields (count = 5):
+  + Field:        a Lokhttp3/MediaType;
+    Access flags: 0x1a
+      = private static final okhttp3.MediaType a
+  + Field:        b Lcom/fasterxml/jackson/databind/ObjectMapper;
+    Access flags: 0x1a
+      = private static final com.fasterxml.jackson.databind.ObjectMapper b
+  + Field:        c Landroid/widget/ProgressBar;
+    Access flags: 0x2
+      = private android.widget.ProgressBar c
+  + Field:        d Lcom/nestlabs/sdk/b;
+    Access flags: 0x2
+      = private com.nestlabs.sdk.b d
+  + Field:        e Lokhttp3/OkHttpClient;
+    Access flags: 0x2
+      = private okhttp3.OkHttpClient e
+
+Methods (count = 10):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public NestAuthActivity()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #32
+        + Methodref [android/app/Activity.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreate(Landroid/os/Bundle;)V
+    Access flags: 0x4
+      = protected void onCreate(android.os.Bundle)
+    Class member attributes (count = 2):
+    + Code attribute instructions (code length = 192, locals = 5, stack = 5):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #33
+        + Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+      [5] aload_0 v0
+      [6] getstatic #31
+        + Fieldref [com/nestlabs/sdk/R$layout.nest_auth_webview_layout I]
+      [9] invokevirtual #47
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.setContentView (I)V]
+      [12] aload_0 v0
+      [13] getstatic #29
+        + Fieldref [com/nestlabs/sdk/R$id.auth_webview I]
+      [16] invokevirtual #44
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.findViewById (I)Landroid/view/View;]
+      [19] checkcast #8
+        + Class [android/webkit/WebView]
+      [22] astore_2 v2
+      [23] aload_0 v0
+      [24] aload_0 v0
+      [25] getstatic #30
+        + Fieldref [com/nestlabs/sdk/R$id.webview_progress I]
+      [28] invokevirtual #44
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.findViewById (I)Landroid/view/View;]
+      [31] checkcast #9
+        + Class [android/widget/ProgressBar]
+      [34] putfield #26
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.c Landroid/widget/ProgressBar;]
+      [37] aload_0 v0
+      [38] aload_0 v0
+      [39] invokevirtual #46
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.getIntent ()Landroid/content/Intent;]
+      [42] ldc #3
+        + String [client_metadata_key]
+      [44] invokevirtual #35
+        + Methodref [android/content/Intent.getParcelableExtra (Ljava/lang/String;)Landroid/os/Parcelable;]
+      [47] checkcast #18
+        + Class [com/nestlabs/sdk/b]
+      [50] putfield #27
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.d Lcom/nestlabs/sdk/b;]
+      [53] aload_0 v0
+      [54] getfield #27
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.d Lcom/nestlabs/sdk/b;]
+      [57] ifnull +43 (target=100)
+      [60] iconst_3
+      [61] anewarray #21
+        + Class [java/lang/String]
+      [64] dup
+      [65] iconst_0
+      [66] aload_0 v0
+      [67] getfield #27
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.d Lcom/nestlabs/sdk/b;]
+      [70] invokevirtual #53
+        + Methodref [com/nestlabs/sdk/b.d ()Ljava/lang/String;]
+      [73] aastore
+      [74] dup
+      [75] iconst_1
+      [76] aload_0 v0
+      [77] getfield #27
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.d Lcom/nestlabs/sdk/b;]
+      [80] invokevirtual #51
+        + Methodref [com/nestlabs/sdk/b.a ()Ljava/lang/String;]
+      [83] aastore
+      [84] dup
+      [85] iconst_2
+      [86] aload_0 v0
+      [87] getfield #27
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.d Lcom/nestlabs/sdk/b;]
+      [90] invokevirtual #52
+        + Methodref [com/nestlabs/sdk/b.b ()Ljava/lang/String;]
+      [93] aastore
+      [94] invokestatic #54
+        + Methodref [com/nestlabs/sdk/d.a ([Ljava/lang/String;)Z]
+      [97] ifeq +10 (target=107)
+      [100] aload_0 v0
+      [101] iconst_0
+      [102] aconst_null
+      [103] invokespecial #43
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (ILcom/nestlabs/sdk/c;)V]
+      [106] return
+      [107] aload_0 v0
+      [108] new #23
+        + Class [okhttp3/OkHttpClient]
+      [111] dup
+      [112] invokespecial #57
+        + Methodref [okhttp3/OkHttpClient.<init> ()V]
+      [115] putfield #28
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.e Lokhttp3/OkHttpClient;]
+      [118] aload_2 v2
+      [119] new #13
+        + Class [com/nestlabs/sdk/NestAuthActivity$a]
+      [122] dup
+      [123] aload_0 v0
+      [124] aconst_null
+      [125] invokespecial #49
+        + Methodref [com/nestlabs/sdk/NestAuthActivity$a.<init> (Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V]
+      [128] invokevirtual #40
+        + Methodref [android/webkit/WebView.setWebChromeClient (Landroid/webkit/WebChromeClient;)V]
+      [131] aload_2 v2
+      [132] new #14
+        + Class [com/nestlabs/sdk/NestAuthActivity$b]
+      [135] dup
+      [136] aload_0 v0
+      [137] aconst_null
+      [138] invokespecial #50
+        + Methodref [com/nestlabs/sdk/NestAuthActivity$b.<init> (Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V]
+      [141] invokevirtual #41
+        + Methodref [android/webkit/WebView.setWebViewClient (Landroid/webkit/WebViewClient;)V]
+      [144] ldc #4
+        + String [https://home.nest.com/login/oauth2?client_id=%s&state=%s]
+      [146] iconst_2
+      [147] anewarray #20
+        + Class [java/lang/Object]
+      [150] dup
+      [151] iconst_0
+      [152] aload_0 v0
+      [153] getfield #27
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.d Lcom/nestlabs/sdk/b;]
+      [156] invokevirtual #51
+        + Methodref [com/nestlabs/sdk/b.a ()Ljava/lang/String;]
+      [159] aastore
+      [160] dup
+      [161] iconst_1
+      [162] aload_0 v0
+      [163] getfield #27
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.d Lcom/nestlabs/sdk/b;]
+      [166] invokevirtual #52
+        + Methodref [com/nestlabs/sdk/b.b ()Ljava/lang/String;]
+      [169] aastore
+      [170] invokestatic #55
+        + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+      [173] astore_3 v3
+      [174] aload_2 v2
+      [175] invokevirtual #38
+        + Methodref [android/webkit/WebView.getSettings ()Landroid/webkit/WebSettings;]
+      [178] astore v4
+      [180] aload v4
+      [182] iconst_1
+      [183] invokevirtual #37
+        + Methodref [android/webkit/WebSettings.setJavaScriptEnabled (Z)V]
+      [186] aload_2 v2
+      [187] aload_3 v3
+      [188] invokevirtual #39
+        + Methodref [android/webkit/WebView.loadUrl (Ljava/lang/String;)V]
+      [191] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+    + Runtime invisible annotations attribute:
+      - Annotation [Landroid/annotation/SuppressLint;]:
+        - Array element value [value]:
+          + Constant element value [(default) 's']
+            + Utf8 [SetJavaScriptEnabled]
+  + Method:       a(ILcom/nestlabs/sdk/c;)V
+    Access flags: 0x2
+      = private void a(int,com.nestlabs.sdk.c)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 27, locals = 4, stack = 3):
+      [0] new #6
+        + Class [android/content/Intent]
+      [3] dup
+      [4] invokespecial #34
+        + Methodref [android/content/Intent.<init> ()V]
+      [7] astore_3 v3
+      [8] aload_3 v3
+      [9] ldc #1
+        + String [access_token_key]
+      [11] aload_2 v2
+      [12] invokevirtual #36
+        + Methodref [android/content/Intent.putExtra (Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;]
+      [15] pop
+      [16] aload_0 v0
+      [17] iload_1 v1
+      [18] aload_3 v3
+      [19] invokevirtual #48
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.setResult (ILandroid/content/Intent;)V]
+      [22] aload_0 v0
+      [23] invokevirtual #45
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.finish ()V]
+      [26] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/nestlabs/sdk/NestAuthActivity;)Landroid/widget/ProgressBar;
+    Access flags: 0x1008
+      = static synthetic android.widget.ProgressBar a(com.nestlabs.sdk.NestAuthActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #26
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.c Landroid/widget/ProgressBar;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Lcom/nestlabs/sdk/NestAuthActivity;)Lcom/nestlabs/sdk/b;
+    Access flags: 0x1008
+      = static synthetic com.nestlabs.sdk.b b(com.nestlabs.sdk.NestAuthActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #27
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.d Lcom/nestlabs/sdk/b;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V
+    Access flags: 0x1008
+      = static synthetic void a(com.nestlabs.sdk.NestAuthActivity,int,com.nestlabs.sdk.c)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] aload_2 v2
+      [3] invokespecial #43
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (ILcom/nestlabs/sdk/c;)V]
+      [6] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()Lokhttp3/MediaType;
+    Access flags: 0x1008
+      = static synthetic okhttp3.MediaType a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 4, locals = 0, stack = 1):
+      [0] getstatic #24
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.a Lokhttp3/MediaType;]
+      [3] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b()Lcom/fasterxml/jackson/databind/ObjectMapper;
+    Access flags: 0x1008
+      = static synthetic com.fasterxml.jackson.databind.ObjectMapper b()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 4, locals = 0, stack = 1):
+      [0] getstatic #25
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.b Lcom/fasterxml/jackson/databind/ObjectMapper;]
+      [3] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c(Lcom/nestlabs/sdk/NestAuthActivity;)Lokhttp3/OkHttpClient;
+    Access flags: 0x1008
+      = static synthetic okhttp3.OkHttpClient c(com.nestlabs.sdk.NestAuthActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #28
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.e Lokhttp3/OkHttpClient;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <clinit>()V
+    Access flags: 0x8
+      = static void <clinit>()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 19, locals = 0, stack = 2):
+      [0] ldc #2
+        + String [application/json; charset=utf-8]
+      [2] invokestatic #56
+        + Methodref [okhttp3/MediaType.parse (Ljava/lang/String;)Lokhttp3/MediaType;]
+      [5] putstatic #24
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.a Lokhttp3/MediaType;]
+      [8] new #10
+        + Class [com/fasterxml/jackson/databind/ObjectMapper]
+      [11] dup
+      [12] invokespecial #42
+        + Methodref [com/fasterxml/jackson/databind/ObjectMapper.<init> ()V]
+      [15] putstatic #25
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity.b Lcom/fasterxml/jackson/databind/ObjectMapper;]
+      [18] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 5)
+    - InnerClassesInfo:
+      Access flags:  0x1008 = static synthetic 
+      + Class [com/nestlabs/sdk/NestAuthActivity$1]
+    - InnerClassesInfo:
+      Access flags:  0x2 = private 
+      + Class [com/nestlabs/sdk/NestAuthActivity$b]
+      + Class [com/nestlabs/sdk/NestAuthActivity]
+      + Utf8 [b]
+    - InnerClassesInfo:
+      Access flags:  0x2 = private 
+      + Class [com/nestlabs/sdk/NestAuthActivity$a]
+      + Class [com/nestlabs/sdk/NestAuthActivity]
+      + Utf8 [a]
+    - InnerClassesInfo:
+      Access flags:  0x19 = public static final 
+      + Class [com/nestlabs/sdk/R$layout]
+      + Class [com/nestlabs/sdk/R]
+      + Utf8 [layout]
+    - InnerClassesInfo:
+      Access flags:  0x19 = public static final 
+      + Class [com/nestlabs/sdk/R$id]
+      + Class [com/nestlabs/sdk/R]
+      + Utf8 [id]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/NestAuthActivity$1
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x1020
+    = synthetic class com.nestlabs.sdk.NestAuthActivity$1 extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 9):
+  + Class [com/nestlabs/sdk/NestAuthActivity]
+  + Class [com/nestlabs/sdk/NestAuthActivity$1]
+  + Class [java/lang/Object]
+  + Utf8 [EnclosingMethod]
+  + Utf8 [InnerClasses]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$1]
+  + Utf8 [java/lang/Object]
+
+Fields (count = 0):
+
+Methods (count = 0):
+
+Class file attributes (count = 2):
+  + Enclosing method attribute:
+    + Class [com/nestlabs/sdk/NestAuthActivity]
+  + Inner classes attribute (count = 1)
+    - InnerClassesInfo:
+      Access flags:  0x1008 = static synthetic 
+      + Class [com/nestlabs/sdk/NestAuthActivity$1]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/NestAuthActivity$a
+  Superclass:    android/webkit/WebChromeClient
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x20
+    = class com.nestlabs.sdk.NestAuthActivity$a extends android.webkit.WebChromeClient
+
+Interfaces (count = 0):
+
+Constant Pool (count = 38):
+  + Class [android/webkit/WebChromeClient]
+  + Class [android/widget/ProgressBar]
+  + Class [com/nestlabs/sdk/NestAuthActivity]
+  + Class [com/nestlabs/sdk/NestAuthActivity$1]
+  + Class [com/nestlabs/sdk/NestAuthActivity$a]
+  + Fieldref [com/nestlabs/sdk/NestAuthActivity$a.a Lcom/nestlabs/sdk/NestAuthActivity;]
+  + Methodref [android/webkit/WebChromeClient.<init> ()V]
+  + Methodref [android/widget/ProgressBar.getVisibility ()I]
+  + Methodref [android/widget/ProgressBar.setVisibility (I)V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;)Landroid/widget/ProgressBar;]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity$a.<init> (Lcom/nestlabs/sdk/NestAuthActivity;)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Lcom/nestlabs/sdk/NestAuthActivity;)V]
+  + NameAndType [a (Lcom/nestlabs/sdk/NestAuthActivity;)Landroid/widget/ProgressBar;]
+  + NameAndType [a Lcom/nestlabs/sdk/NestAuthActivity;]
+  + NameAndType [getVisibility ()I]
+  + NameAndType [setVisibility (I)V]
+  + Utf8 [()I]
+  + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(Landroid/webkit/WebView;I)V]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;)Landroid/widget/ProgressBar;]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;)V]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [InnerClasses]
+  + Utf8 [Lcom/nestlabs/sdk/NestAuthActivity;]
+  + Utf8 [a]
+  + Utf8 [android/webkit/WebChromeClient]
+  + Utf8 [android/widget/ProgressBar]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$1]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$a]
+  + Utf8 [getVisibility]
+  + Utf8 [onProgressChanged]
+  + Utf8 [setVisibility]
+
+Fields (count = 1):
+  + Field:        a Lcom/nestlabs/sdk/NestAuthActivity;
+    Access flags: 0x1010
+      = final synthetic com.nestlabs.sdk.NestAuthActivity a
+
+Methods (count = 3):
+  - Method:       <init>(Lcom/nestlabs/sdk/NestAuthActivity;)V
+    Access flags: 0x2
+      = private NestAuthActivity$a(com.nestlabs.sdk.NestAuthActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #6
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$a.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [5] aload_0 v0
+      [6] invokespecial #7
+        + Methodref [android/webkit/WebChromeClient.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onProgressChanged(Landroid/webkit/WebView;I)V
+    Access flags: 0x1
+      = public void onProgressChanged(android.webkit.WebView,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 60, locals = 4, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$a.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [4] invokestatic #10
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;)Landroid/widget/ProgressBar;]
+      [7] invokevirtual #8
+        + Methodref [android/widget/ProgressBar.getVisibility ()I]
+      [10] istore_3 v3
+      [11] iload_2 v2
+      [12] bipush 100
+      [14] ificmpge +21 (target=35)
+      [17] iload_3 v3
+      [18] ifeq +17 (target=35)
+      [21] aload_0 v0
+      [22] getfield #6
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$a.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [25] invokestatic #10
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;)Landroid/widget/ProgressBar;]
+      [28] iconst_0
+      [29] invokevirtual #9
+        + Methodref [android/widget/ProgressBar.setVisibility (I)V]
+      [32] goto +27 (target=59)
+      [35] iload_2 v2
+      [36] bipush 100
+      [38] ificmpne +21 (target=59)
+      [41] iload_3 v3
+      [42] bipush 8
+      [44] ificmpeq +15 (target=59)
+      [47] aload_0 v0
+      [48] getfield #6
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$a.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [51] invokestatic #10
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;)Landroid/widget/ProgressBar;]
+      [54] bipush 8
+      [56] invokevirtual #9
+        + Methodref [android/widget/ProgressBar.setVisibility (I)V]
+      [59] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <init>(Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V
+    Access flags: 0x1000
+      = synthetic NestAuthActivity$a(com.nestlabs.sdk.NestAuthActivity,com.nestlabs.sdk.NestAuthActivity$1)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #11
+        + Methodref [com/nestlabs/sdk/NestAuthActivity$a.<init> (Lcom/nestlabs/sdk/NestAuthActivity;)V]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 2)
+    - InnerClassesInfo:
+      Access flags:  0x2 = private 
+      + Class [com/nestlabs/sdk/NestAuthActivity$a]
+      + Class [com/nestlabs/sdk/NestAuthActivity]
+      + Utf8 [a]
+    - InnerClassesInfo:
+      Access flags:  0x1008 = static synthetic 
+      + Class [com/nestlabs/sdk/NestAuthActivity$1]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/NestAuthActivity$b
+  Superclass:    android/webkit/WebViewClient
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x20
+    = class com.nestlabs.sdk.NestAuthActivity$b extends android.webkit.WebViewClient
+
+Interfaces (count = 0):
+
+Constant Pool (count = 121):
+  + String []
+  + String [code]
+  + Class [android/net/Uri]
+  + Class [android/webkit/WebViewClient]
+  + Class [com/nestlabs/sdk/NestAuthActivity]
+  + Class [com/nestlabs/sdk/NestAuthActivity$1]
+  + Class [com/nestlabs/sdk/NestAuthActivity$b]
+  + Class [com/nestlabs/sdk/NestAuthActivity$b$1]
+  + Class [com/nestlabs/sdk/a]
+  + Class [com/nestlabs/sdk/b]
+  + Class [java/lang/Object]
+  + Class [java/lang/String]
+  + Class [okhttp3/Call]
+  + Class [okhttp3/OkHttpClient]
+  + Class [okhttp3/Request]
+  + Class [okhttp3/Request$Builder]
+  + Class [okhttp3/RequestBody]
+  + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+  + Fieldref [com/nestlabs/sdk/a.a Ljava/lang/String;]
+  + Methodref [android/net/Uri.getQueryParameter (Ljava/lang/String;)Ljava/lang/String;]
+  + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
+  + Methodref [android/webkit/WebViewClient.<init> ()V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.a ()Lokhttp3/MediaType;]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.b (Lcom/nestlabs/sdk/NestAuthActivity;)Lcom/nestlabs/sdk/b;]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.c (Lcom/nestlabs/sdk/NestAuthActivity;)Lokhttp3/OkHttpClient;]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity$b.<init> (Lcom/nestlabs/sdk/NestAuthActivity;)V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity$b$1.<init> (Lcom/nestlabs/sdk/NestAuthActivity$b;)V]
+  + Methodref [com/nestlabs/sdk/b.a ()Ljava/lang/String;]
+  + Methodref [com/nestlabs/sdk/b.c ()Ljava/lang/String;]
+  + Methodref [com/nestlabs/sdk/b.d ()Ljava/lang/String;]
+  + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
+  + Methodref [okhttp3/OkHttpClient.newCall (Lokhttp3/Request;)Lokhttp3/Call;]
+  + Methodref [okhttp3/Request$Builder.<init> ()V]
+  + Methodref [okhttp3/Request$Builder.build ()Lokhttp3/Request;]
+  + Methodref [okhttp3/Request$Builder.post (Lokhttp3/RequestBody;)Lokhttp3/Request$Builder;]
+  + Methodref [okhttp3/Request$Builder.url (Ljava/lang/String;)Lokhttp3/Request$Builder;]
+  + Methodref [okhttp3/RequestBody.create (Lokhttp3/MediaType;Ljava/lang/String;)Lokhttp3/RequestBody;]
+  + InterfaceMethodref [okhttp3/Call.enqueue (Lokhttp3/Callback;)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Lcom/nestlabs/sdk/NestAuthActivity$b;)V]
+  + NameAndType [<init> (Lcom/nestlabs/sdk/NestAuthActivity;)V]
+  + NameAndType [a ()Ljava/lang/String;]
+  + NameAndType [a ()Lokhttp3/MediaType;]
+  + NameAndType [a (Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+  + NameAndType [a Lcom/nestlabs/sdk/NestAuthActivity;]
+  + NameAndType [a Ljava/lang/String;]
+  + NameAndType [b (Lcom/nestlabs/sdk/NestAuthActivity;)Lcom/nestlabs/sdk/b;]
+  + NameAndType [build ()Lokhttp3/Request;]
+  + NameAndType [c ()Ljava/lang/String;]
+  + NameAndType [c (Lcom/nestlabs/sdk/NestAuthActivity;)Lokhttp3/OkHttpClient;]
+  + NameAndType [create (Lokhttp3/MediaType;Ljava/lang/String;)Lokhttp3/RequestBody;]
+  + NameAndType [d ()Ljava/lang/String;]
+  + NameAndType [enqueue (Lokhttp3/Callback;)V]
+  + NameAndType [format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + NameAndType [getQueryParameter (Ljava/lang/String;)Ljava/lang/String;]
+  + NameAndType [newCall (Lokhttp3/Request;)Lokhttp3/Call;]
+  + NameAndType [parse (Ljava/lang/String;)Landroid/net/Uri;]
+  + NameAndType [post (Lokhttp3/RequestBody;)Lokhttp3/Request$Builder;]
+  + NameAndType [startsWith (Ljava/lang/String;)Z]
+  + NameAndType [url (Ljava/lang/String;)Lokhttp3/Request$Builder;]
+  + Utf8 []
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Lokhttp3/MediaType;]
+  + Utf8 [()Lokhttp3/Request;]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/webkit/WebView;Ljava/lang/String;)Z]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity$b;)V]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;)Lcom/nestlabs/sdk/b;]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;)Lokhttp3/OkHttpClient;]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;)V]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V]
+  + Utf8 [(Ljava/lang/String;)Landroid/net/Uri;]
+  + Utf8 [(Ljava/lang/String;)Ljava/lang/String;]
+  + Utf8 [(Ljava/lang/String;)Lokhttp3/Request$Builder;]
+  + Utf8 [(Ljava/lang/String;)Z]
+  + Utf8 [(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + Utf8 [(Lokhttp3/Callback;)V]
+  + Utf8 [(Lokhttp3/MediaType;Ljava/lang/String;)Lokhttp3/RequestBody;]
+  + Utf8 [(Lokhttp3/Request;)Lokhttp3/Call;]
+  + Utf8 [(Lokhttp3/RequestBody;)Lokhttp3/Request$Builder;]
+  + Utf8 [<init>]
+  + Utf8 [Builder]
+  + Utf8 [Code]
+  + Utf8 [InnerClasses]
+  + Utf8 [Lcom/nestlabs/sdk/NestAuthActivity;]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [a]
+  + Utf8 [android/net/Uri]
+  + Utf8 [android/webkit/WebViewClient]
+  + Utf8 [b]
+  + Utf8 [build]
+  + Utf8 [c]
+  + Utf8 [code]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$1]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$b]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$b$1]
+  + Utf8 [com/nestlabs/sdk/a]
+  + Utf8 [com/nestlabs/sdk/b]
+  + Utf8 [create]
+  + Utf8 [d]
+  + Utf8 [enqueue]
+  + Utf8 [format]
+  + Utf8 [getQueryParameter]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
+  + Utf8 [newCall]
+  + Utf8 [okhttp3/Call]
+  + Utf8 [okhttp3/OkHttpClient]
+  + Utf8 [okhttp3/Request]
+  + Utf8 [okhttp3/Request$Builder]
+  + Utf8 [okhttp3/RequestBody]
+  + Utf8 [parse]
+  + Utf8 [post]
+  + Utf8 [shouldOverrideUrlLoading]
+  + Utf8 [startsWith]
+  + Utf8 [url]
+
+Fields (count = 1):
+  + Field:        a Lcom/nestlabs/sdk/NestAuthActivity;
+    Access flags: 0x1010
+      = final synthetic com.nestlabs.sdk.NestAuthActivity a
+
+Methods (count = 3):
+  - Method:       <init>(Lcom/nestlabs/sdk/NestAuthActivity;)V
+    Access flags: 0x2
+      = private NestAuthActivity$b(com.nestlabs.sdk.NestAuthActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #18
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [5] aload_0 v0
+      [6] invokespecial #22
+        + Methodref [android/webkit/WebViewClient.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       shouldOverrideUrlLoading(Landroid/webkit/WebView;Ljava/lang/String;)Z
+    Access flags: 0x1
+      = public boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 145, locals = 7, stack = 5):
+      [0] aload_2 v2
+      [1] aload_0 v0
+      [2] getfield #18
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [5] invokestatic #25
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.b (Lcom/nestlabs/sdk/NestAuthActivity;)Lcom/nestlabs/sdk/b;]
+      [8] invokevirtual #31
+        + Methodref [com/nestlabs/sdk/b.d ()Ljava/lang/String;]
+      [11] invokevirtual #33
+        + Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
+      [14] ifne +5 (target=19)
+      [17] iconst_0
+      [18] ireturn
+      [19] aload_2 v2
+      [20] invokestatic #21
+        + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
+      [23] ldc #2
+        + String [code]
+      [25] invokevirtual #20
+        + Methodref [android/net/Uri.getQueryParameter (Ljava/lang/String;)Ljava/lang/String;]
+      [28] astore_3 v3
+      [29] aload_3 v3
+      [30] ifnonnull +14 (target=44)
+      [33] aload_0 v0
+      [34] getfield #18
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [37] iconst_0
+      [38] aconst_null
+      [39] invokestatic #24
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+      [42] iconst_1
+      [43] ireturn
+      [44] getstatic #19
+        + Fieldref [com/nestlabs/sdk/a.a Ljava/lang/String;]
+      [47] iconst_3
+      [48] anewarray #11
+        + Class [java/lang/Object]
+      [51] dup
+      [52] iconst_0
+      [53] aload_3 v3
+      [54] aastore
+      [55] dup
+      [56] iconst_1
+      [57] aload_0 v0
+      [58] getfield #18
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [61] invokestatic #25
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.b (Lcom/nestlabs/sdk/NestAuthActivity;)Lcom/nestlabs/sdk/b;]
+      [64] invokevirtual #29
+        + Methodref [com/nestlabs/sdk/b.a ()Ljava/lang/String;]
+      [67] aastore
+      [68] dup
+      [69] iconst_2
+      [70] aload_0 v0
+      [71] getfield #18
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [74] invokestatic #25
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.b (Lcom/nestlabs/sdk/NestAuthActivity;)Lcom/nestlabs/sdk/b;]
+      [77] invokevirtual #30
+        + Methodref [com/nestlabs/sdk/b.c ()Ljava/lang/String;]
+      [80] aastore
+      [81] invokestatic #32
+        + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+      [84] astore v4
+      [86] invokestatic #23
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a ()Lokhttp3/MediaType;]
+      [89] ldc #1
+        + String []
+      [91] invokestatic #39
+        + Methodref [okhttp3/RequestBody.create (Lokhttp3/MediaType;Ljava/lang/String;)Lokhttp3/RequestBody;]
+      [94] astore v5
+      [96] new #16
+        + Class [okhttp3/Request$Builder]
+      [99] dup
+      [100] invokespecial #35
+        + Methodref [okhttp3/Request$Builder.<init> ()V]
+      [103] aload v4
+      [105] invokevirtual #38
+        + Methodref [okhttp3/Request$Builder.url (Ljava/lang/String;)Lokhttp3/Request$Builder;]
+      [108] aload v5
+      [110] invokevirtual #37
+        + Methodref [okhttp3/Request$Builder.post (Lokhttp3/RequestBody;)Lokhttp3/Request$Builder;]
+      [113] invokevirtual #36
+        + Methodref [okhttp3/Request$Builder.build ()Lokhttp3/Request;]
+      [116] astore v6
+      [118] aload_0 v0
+      [119] getfield #18
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [122] invokestatic #26
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.c (Lcom/nestlabs/sdk/NestAuthActivity;)Lokhttp3/OkHttpClient;]
+      [125] aload v6
+      [127] invokevirtual #34
+        + Methodref [okhttp3/OkHttpClient.newCall (Lokhttp3/Request;)Lokhttp3/Call;]
+      [130] new #8
+        + Class [com/nestlabs/sdk/NestAuthActivity$b$1]
+      [133] dup
+      [134] aload_0 v0
+      [135] invokespecial #28
+        + Methodref [com/nestlabs/sdk/NestAuthActivity$b$1.<init> (Lcom/nestlabs/sdk/NestAuthActivity$b;)V]
+      [138] invokeinterface #40, 512
+        + InterfaceMethodref [okhttp3/Call.enqueue (Lokhttp3/Callback;)V]
+      [143] iconst_1
+      [144] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <init>(Lcom/nestlabs/sdk/NestAuthActivity;Lcom/nestlabs/sdk/NestAuthActivity$1;)V
+    Access flags: 0x1000
+      = synthetic NestAuthActivity$b(com.nestlabs.sdk.NestAuthActivity,com.nestlabs.sdk.NestAuthActivity$1)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #27
+        + Methodref [com/nestlabs/sdk/NestAuthActivity$b.<init> (Lcom/nestlabs/sdk/NestAuthActivity;)V]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 4)
+    - InnerClassesInfo:
+      Access flags:  0x2 = private 
+      + Class [com/nestlabs/sdk/NestAuthActivity$b]
+      + Class [com/nestlabs/sdk/NestAuthActivity]
+      + Utf8 [b]
+    - InnerClassesInfo:
+      Access flags:  0x0 = 
+      + Class [com/nestlabs/sdk/NestAuthActivity$b$1]
+    - InnerClassesInfo:
+      Access flags:  0x1008 = static synthetic 
+      + Class [com/nestlabs/sdk/NestAuthActivity$1]
+    - InnerClassesInfo:
+      Access flags:  0x9 = public static 
+      + Class [okhttp3/Request$Builder]
+      + Class [okhttp3/Request]
+      + Utf8 [Builder]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/NestAuthActivity$b$1
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x20
+    = class com.nestlabs.sdk.NestAuthActivity$b$1 extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [okhttp3/Callback]
+
+Constant Pool (count = 78):
+  + String [Failed to get token.]
+  + String [Failed to parse response for token.]
+  + String [NestAuthActivity]
+  + Class [android/util/Log]
+  + Class [com/fasterxml/jackson/databind/ObjectMapper]
+  + Class [com/nestlabs/sdk/NestAuthActivity]
+  + Class [com/nestlabs/sdk/NestAuthActivity$b]
+  + Class [com/nestlabs/sdk/NestAuthActivity$b$1]
+  + Class [com/nestlabs/sdk/c]
+  + Class [java/io/IOException]
+  + Class [java/lang/Object]
+  + Class [okhttp3/Callback]
+  + Class [okhttp3/Response]
+  + Class [okhttp3/ResponseBody]
+  + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+  + Fieldref [com/nestlabs/sdk/NestAuthActivity$b$1.a Lcom/nestlabs/sdk/NestAuthActivity$b;]
+  + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+  + Methodref [com/fasterxml/jackson/databind/ObjectMapper.readValue (Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+  + Methodref [com/nestlabs/sdk/NestAuthActivity.b ()Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + Methodref [java/lang/Object.<init> ()V]
+  + Methodref [okhttp3/Response.body ()Lokhttp3/ResponseBody;]
+  + Methodref [okhttp3/Response.isSuccessful ()Z]
+  + Methodref [okhttp3/ResponseBody.string ()Ljava/lang/String;]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+  + NameAndType [a Lcom/nestlabs/sdk/NestAuthActivity$b;]
+  + NameAndType [a Lcom/nestlabs/sdk/NestAuthActivity;]
+  + NameAndType [b ()Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + NameAndType [body ()Lokhttp3/ResponseBody;]
+  + NameAndType [e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+  + NameAndType [isSuccessful ()Z]
+  + NameAndType [readValue (Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;]
+  + NameAndType [shouldOverrideUrlLoading (Landroid/webkit/WebView;Ljava/lang/String;)Z]
+  + NameAndType [string ()Ljava/lang/String;]
+  + Utf8 [()Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Lokhttp3/ResponseBody;]
+  + Utf8 [()V]
+  + Utf8 [()Z]
+  + Utf8 [(Landroid/webkit/WebView;Ljava/lang/String;)Z]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity$b;)V]
+  + Utf8 [(Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+  + Utf8 [(Lokhttp3/Call;Ljava/io/IOException;)V]
+  + Utf8 [(Lokhttp3/Call;Lokhttp3/Response;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [EnclosingMethod]
+  + Utf8 [Failed to get token.]
+  + Utf8 [Failed to parse response for token.]
+  + Utf8 [InnerClasses]
+  + Utf8 [Lcom/nestlabs/sdk/NestAuthActivity$b;]
+  + Utf8 [Lcom/nestlabs/sdk/NestAuthActivity;]
+  + Utf8 [NestAuthActivity]
+  + Utf8 [a]
+  + Utf8 [android/util/Log]
+  + Utf8 [b]
+  + Utf8 [body]
+  + Utf8 [com/fasterxml/jackson/databind/ObjectMapper]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$b]
+  + Utf8 [com/nestlabs/sdk/NestAuthActivity$b$1]
+  + Utf8 [com/nestlabs/sdk/c]
+  + Utf8 [e]
+  + Utf8 [isSuccessful]
+  + Utf8 [java/io/IOException]
+  + Utf8 [java/lang/Object]
+  + Utf8 [okhttp3/Callback]
+  + Utf8 [okhttp3/Response]
+  + Utf8 [okhttp3/ResponseBody]
+  + Utf8 [onFailure]
+  + Utf8 [onResponse]
+  + Utf8 [readValue]
+  + Utf8 [shouldOverrideUrlLoading]
+  + Utf8 [string]
+
+Fields (count = 1):
+  + Field:        a Lcom/nestlabs/sdk/NestAuthActivity$b;
+    Access flags: 0x1010
+      = final synthetic com.nestlabs.sdk.NestAuthActivity$b a
+
+Methods (count = 3):
+  - Method:       <init>(Lcom/nestlabs/sdk/NestAuthActivity$b;)V
+    Access flags: 0x0
+      = NestAuthActivity$b$1(com.nestlabs.sdk.NestAuthActivity$b)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #16
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b$1.a Lcom/nestlabs/sdk/NestAuthActivity$b;]
+      [5] aload_0 v0
+      [6] invokespecial #21
+        + Methodref [java/lang/Object.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onFailure(Lokhttp3/Call;Ljava/io/IOException;)V
+    Access flags: 0x1
+      = public void onFailure(okhttp3.Call,java.io.IOException)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 22, locals = 3, stack = 3):
+      [0] ldc #3
+        + String [NestAuthActivity]
+      [2] ldc #1
+        + String [Failed to get token.]
+      [4] aload_2 v2
+      [5] invokestatic #17
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+      [8] pop
+      [9] aload_0 v0
+      [10] getfield #16
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b$1.a Lcom/nestlabs/sdk/NestAuthActivity$b;]
+      [13] getfield #15
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [16] iconst_0
+      [17] aconst_null
+      [18] invokestatic #19
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+      [21] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onResponse(Lokhttp3/Call;Lokhttp3/Response;)V
+    Access flags: 0x1
+      = public void onResponse(okhttp3.Call,okhttp3.Response)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 81, locals = 5, stack = 3):
+      [0] aload_2 v2
+      [1] invokevirtual #23
+        + Methodref [okhttp3/Response.isSuccessful ()Z]
+      [4] ifne +16 (target=20)
+      [7] aload_0 v0
+      [8] getfield #16
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b$1.a Lcom/nestlabs/sdk/NestAuthActivity$b;]
+      [11] getfield #15
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [14] iconst_0
+      [15] aconst_null
+      [16] invokestatic #19
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+      [19] return
+      [20] aload_2 v2
+      [21] invokevirtual #22
+        + Methodref [okhttp3/Response.body ()Lokhttp3/ResponseBody;]
+      [24] invokevirtual #24
+        + Methodref [okhttp3/ResponseBody.string ()Ljava/lang/String;]
+      [27] astore_3 v3
+      [28] invokestatic #20
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.b ()Lcom/fasterxml/jackson/databind/ObjectMapper;]
+      [31] aload_3 v3
+      [32] ldc #9
+        + Class [com/nestlabs/sdk/c]
+      [34] invokevirtual #18
+        + Methodref [com/fasterxml/jackson/databind/ObjectMapper.readValue (Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;]
+      [37] checkcast #9
+        + Class [com/nestlabs/sdk/c]
+      [40] astore v4
+      [42] aload_0 v0
+      [43] getfield #16
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b$1.a Lcom/nestlabs/sdk/NestAuthActivity$b;]
+      [46] getfield #15
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [49] iconst_m1
+      [50] aload v4
+      [52] invokestatic #19
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+      [55] goto +25 (target=80)
+      [58] astore_3 v3
+      [59] ldc #3
+        + String [NestAuthActivity]
+      [61] ldc #2
+        + String [Failed to parse response for token.]
+      [63] aload_3 v3
+      [64] invokestatic #17
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+      [67] pop
+      [68] aload_0 v0
+      [69] getfield #16
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b$1.a Lcom/nestlabs/sdk/NestAuthActivity$b;]
+      [72] getfield #15
+        + Fieldref [com/nestlabs/sdk/NestAuthActivity$b.a Lcom/nestlabs/sdk/NestAuthActivity;]
+      [75] iconst_0
+      [76] aconst_null
+      [77] invokestatic #19
+        + Methodref [com/nestlabs/sdk/NestAuthActivity.a (Lcom/nestlabs/sdk/NestAuthActivity;ILcom/nestlabs/sdk/c;)V]
+      [80] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (20 -> 55: 58):
+      + Class [java/io/IOException]
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 2):
+  + Enclosing method attribute:
+    + Class [com/nestlabs/sdk/NestAuthActivity$b]
+    + NameAndType [shouldOverrideUrlLoading (Landroid/webkit/WebView;Ljava/lang/String;)Z]
+  + Inner classes attribute (count = 2)
+    - InnerClassesInfo:
+      Access flags:  0x2 = private 
+      + Class [com/nestlabs/sdk/NestAuthActivity$b]
+      + Class [com/nestlabs/sdk/NestAuthActivity]
+      + Utf8 [b]
+    - InnerClassesInfo:
+      Access flags:  0x0 = 
+      + Class [com/nestlabs/sdk/NestAuthActivity$b$1]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/b
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x31
+    = public final class com.nestlabs.sdk.b extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/os/Parcelable]
+
+Constant Pool (count = 85):
+  + String [client_id]
+  + String [client_secret]
+  + String [redirect_url]
+  + String [state_value]
+  + Class [android/os/Parcel]
+  + Class [android/os/Parcelable]
+  + Class [android/os/Parcelable$Creator]
+  + Class [com/nestlabs/sdk/b]
+  + Class [com/nestlabs/sdk/b$1]
+  + Class [java/lang/Object]
+  + Class [java/lang/String]
+  + Class [org/json/JSONException]
+  + Class [org/json/JSONObject]
+  + Fieldref [com/nestlabs/sdk/b.CREATOR Landroid/os/Parcelable$Creator;]
+  + Fieldref [com/nestlabs/sdk/b.a Ljava/lang/String;]
+  + Fieldref [com/nestlabs/sdk/b.b Ljava/lang/String;]
+  + Fieldref [com/nestlabs/sdk/b.c Ljava/lang/String;]
+  + Fieldref [com/nestlabs/sdk/b.d Ljava/lang/String;]
+  + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+  + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+  + Methodref [com/nestlabs/sdk/b.<init> (Landroid/os/Parcel;)V]
+  + Methodref [com/nestlabs/sdk/b.toString ()Ljava/lang/String;]
+  + Methodref [com/nestlabs/sdk/b$1.<init> ()V]
+  + Methodref [java/lang/Object.<init> ()V]
+  + Methodref [java/lang/Object.toString ()Ljava/lang/String;]
+  + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
+  + Methodref [org/json/JSONObject.<init> ()V]
+  + Methodref [org/json/JSONObject.put (Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;]
+  + Methodref [org/json/JSONObject.toString ()Ljava/lang/String;]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/os/Parcel;)V]
+  + NameAndType [CREATOR Landroid/os/Parcelable$Creator;]
+  + NameAndType [a Ljava/lang/String;]
+  + NameAndType [b Ljava/lang/String;]
+  + NameAndType [c Ljava/lang/String;]
+  + NameAndType [d Ljava/lang/String;]
+  + NameAndType [equals (Ljava/lang/Object;)Z]
+  + NameAndType [put (Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;]
+  + NameAndType [readString ()Ljava/lang/String;]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [writeString (Ljava/lang/String;)V]
+  + Utf8 [()I]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/os/Parcel;)V]
+  + Utf8 [(Landroid/os/Parcel;I)V]
+  + Utf8 [(Landroid/os/Parcel;Lcom/nestlabs/sdk/b$1;)V]
+  + Utf8 [(Ljava/lang/Object;)Z]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;]
+  + Utf8 [<clinit>]
+  + Utf8 [<init>]
+  + Utf8 [CREATOR]
+  + Utf8 [Code]
+  + Utf8 [Creator]
+  + Utf8 [InnerClasses]
+  + Utf8 [Landroid/os/Parcelable$Creator;]
+  + Utf8 [Landroid/os/Parcelable$Creator<Lcom/nestlabs/sdk/b;>;]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [Signature]
+  + Utf8 [a]
+  + Utf8 [android/os/Parcel]
+  + Utf8 [android/os/Parcelable]
+  + Utf8 [android/os/Parcelable$Creator]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [client_id]
+  + Utf8 [client_secret]
+  + Utf8 [com/nestlabs/sdk/b]
+  + Utf8 [com/nestlabs/sdk/b$1]
+  + Utf8 [d]
+  + Utf8 [describeContents]
+  + Utf8 [equals]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
+  + Utf8 [org/json/JSONException]
+  + Utf8 [org/json/JSONObject]
+  + Utf8 [put]
+  + Utf8 [readString]
+  + Utf8 [redirect_url]
+  + Utf8 [state_value]
+  + Utf8 [toString]
+  + Utf8 [writeString]
+  + Utf8 [writeToParcel]
+
+Fields (count = 5):
+  + Field:        a Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String a
+  + Field:        b Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String b
+  + Field:        c Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String c
+  + Field:        d Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String d
+  + Field:        CREATOR Landroid/os/Parcelable$Creator;
+    Access flags: 0x19
+      = public static final android.os.Parcelable$Creator CREATOR
+    Class member attributes (count = 1):
+    + Signature attribute:
+      + Utf8 [Landroid/os/Parcelable$Creator<Lcom/nestlabs/sdk/b;>;]
+
+Methods (count = 11):
+  - Method:       <init>(Landroid/os/Parcel;)V
+    Access flags: 0x2
+      = private b(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 37, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #24
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] aload_0 v0
+      [5] aload_1 v1
+      [6] invokevirtual #19
+        + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+      [9] putfield #15
+        + Fieldref [com/nestlabs/sdk/b.a Ljava/lang/String;]
+      [12] aload_0 v0
+      [13] aload_1 v1
+      [14] invokevirtual #19
+        + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+      [17] putfield #16
+        + Fieldref [com/nestlabs/sdk/b.b Ljava/lang/String;]
+      [20] aload_0 v0
+      [21] aload_1 v1
+      [22] invokevirtual #19
+        + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+      [25] putfield #17
+        + Fieldref [com/nestlabs/sdk/b.c Ljava/lang/String;]
+      [28] aload_0 v0
+      [29] aload_1 v1
+      [30] invokevirtual #19
+        + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+      [33] putfield #18
+        + Fieldref [com/nestlabs/sdk/b.d Ljava/lang/String;]
+      [36] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()Ljava/lang/String;
+    Access flags: 0x1
+      = public java.lang.String a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #15
+        + Fieldref [com/nestlabs/sdk/b.a Ljava/lang/String;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b()Ljava/lang/String;
+    Access flags: 0x1
+      = public java.lang.String b()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #16
+        + Fieldref [com/nestlabs/sdk/b.b Ljava/lang/String;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c()Ljava/lang/String;
+    Access flags: 0x1
+      = public java.lang.String c()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #17
+        + Fieldref [com/nestlabs/sdk/b.c Ljava/lang/String;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d()Ljava/lang/String;
+    Access flags: 0x1
+      = public java.lang.String d()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #18
+        + Fieldref [com/nestlabs/sdk/b.d Ljava/lang/String;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       toString()Ljava/lang/String;
+    Access flags: 0x1
+      = public java.lang.String toString()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 63, locals = 2, stack = 3):
+      [0] new #13
+        + Class [org/json/JSONObject]
+      [3] dup
+      [4] invokespecial #27
+        + Methodref [org/json/JSONObject.<init> ()V]
+      [7] astore_1 v1
+      [8] aload_1 v1
+      [9] ldc #1
+        + String [client_id]
+      [11] aload_0 v0
+      [12] getfield #15
+        + Fieldref [com/nestlabs/sdk/b.a Ljava/lang/String;]
+      [15] invokevirtual #28
+        + Methodref [org/json/JSONObject.put (Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;]
+      [18] pop
+      [19] aload_1 v1
+      [20] ldc #2
+        + String [client_secret]
+      [22] aload_0 v0
+      [23] getfield #17
+        + Fieldref [com/nestlabs/sdk/b.c Ljava/lang/String;]
+      [26] invokevirtual #28
+        + Methodref [org/json/JSONObject.put (Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;]
+      [29] pop
+      [30] aload_1 v1
+      [31] ldc #3
+        + String [redirect_url]
+      [33] aload_0 v0
+      [34] getfield #18
+        + Fieldref [com/nestlabs/sdk/b.d Ljava/lang/String;]
+      [37] invokevirtual #28
+        + Methodref [org/json/JSONObject.put (Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;]
+      [40] pop
+      [41] aload_1 v1
+      [42] ldc #4
+        + String [state_value]
+      [44] aload_0 v0
+      [45] getfield #16
+        + Fieldref [com/nestlabs/sdk/b.b Ljava/lang/String;]
+      [48] invokevirtual #28
+        + Methodref [org/json/JSONObject.put (Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;]
+      [51] pop
+      [52] aload_1 v1
+      [53] invokevirtual #29
+        + Methodref [org/json/JSONObject.toString ()Ljava/lang/String;]
+      [56] areturn
+      [57] astore_1 v1
+      [58] aload_0 v0
+      [59] invokespecial #25
+        + Methodref [java/lang/Object.toString ()Ljava/lang/String;]
+      [62] areturn
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (0 -> 56: 57):
+      + Class [org/json/JSONException]
+      Code attribute attributes (attribute count = 0):
+  + Method:       equals(Ljava/lang/Object;)Z
+    Access flags: 0x1
+      = public boolean equals(java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 33, locals = 3, stack = 2):
+      [0] aload_1 v1
+      [1] aload_0 v0
+      [2] ifacmpne +5 (target=7)
+      [5] iconst_1
+      [6] ireturn
+      [7] aload_1 v1
+      [8] instanceof #8
+        + Class [com/nestlabs/sdk/b]
+      [11] ifeq +20 (target=31)
+      [14] aload_1 v1
+      [15] checkcast #8
+        + Class [com/nestlabs/sdk/b]
+      [18] astore_2 v2
+      [19] aload_2 v2
+      [20] invokevirtual #22
+        + Methodref [com/nestlabs/sdk/b.toString ()Ljava/lang/String;]
+      [23] aload_0 v0
+      [24] invokevirtual #22
+        + Methodref [com/nestlabs/sdk/b.toString ()Ljava/lang/String;]
+      [27] invokevirtual #26
+        + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
+      [30] ireturn
+      [31] iconst_0
+      [32] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       describeContents()I
+    Access flags: 0x1
+      = public int describeContents()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 2, locals = 1, stack = 1):
+      [0] iconst_0
+      [1] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       writeToParcel(Landroid/os/Parcel;I)V
+    Access flags: 0x1
+      = public void writeToParcel(android.os.Parcel,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 33, locals = 3, stack = 2):
+      [0] aload_1 v1
+      [1] aload_0 v0
+      [2] getfield #15
+        + Fieldref [com/nestlabs/sdk/b.a Ljava/lang/String;]
+      [5] invokevirtual #20
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [8] aload_1 v1
+      [9] aload_0 v0
+      [10] getfield #16
+        + Fieldref [com/nestlabs/sdk/b.b Ljava/lang/String;]
+      [13] invokevirtual #20
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [16] aload_1 v1
+      [17] aload_0 v0
+      [18] getfield #17
+        + Fieldref [com/nestlabs/sdk/b.c Ljava/lang/String;]
+      [21] invokevirtual #20
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [24] aload_1 v1
+      [25] aload_0 v0
+      [26] getfield #18
+        + Fieldref [com/nestlabs/sdk/b.d Ljava/lang/String;]
+      [29] invokevirtual #20
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [32] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <init>(Landroid/os/Parcel;Lcom/nestlabs/sdk/b$1;)V
+    Access flags: 0x1000
+      = synthetic b(android.os.Parcel,com.nestlabs.sdk.b$1)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #21
+        + Methodref [com/nestlabs/sdk/b.<init> (Landroid/os/Parcel;)V]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <clinit>()V
+    Access flags: 0x8
+      = static void <clinit>()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 0, stack = 2):
+      [0] new #9
+        + Class [com/nestlabs/sdk/b$1]
+      [3] dup
+      [4] invokespecial #23
+        + Methodref [com/nestlabs/sdk/b$1.<init> ()V]
+      [7] putstatic #14
+        + Fieldref [com/nestlabs/sdk/b.CREATOR Landroid/os/Parcelable$Creator;]
+      [10] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 2)
+    - InnerClassesInfo:
+      Access flags:  0x8 = static 
+      + Class [com/nestlabs/sdk/b$1]
+    - InnerClassesInfo:
+      Access flags:  0x609 = public static interface 
+      + Class [android/os/Parcelable$Creator]
+      + Class [android/os/Parcelable]
+      + Utf8 [Creator]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/b$1
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x30
+    = final class com.nestlabs.sdk.b$1 extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/os/Parcelable$Creator]
+
+Constant Pool (count = 35):
+  + Class [android/os/Parcelable]
+  + Class [android/os/Parcelable$Creator]
+  + Class [com/nestlabs/sdk/b]
+  + Class [com/nestlabs/sdk/b$1]
+  + Class [java/lang/Object]
+  + Methodref [com/nestlabs/sdk/b.<init> (Landroid/os/Parcel;Lcom/nestlabs/sdk/b$1;)V]
+  + Methodref [com/nestlabs/sdk/b$1.a (I)[Lcom/nestlabs/sdk/b;]
+  + Methodref [com/nestlabs/sdk/b$1.a (Landroid/os/Parcel;)Lcom/nestlabs/sdk/b;]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/os/Parcel;Lcom/nestlabs/sdk/b$1;)V]
+  + NameAndType [a (I)[Lcom/nestlabs/sdk/b;]
+  + NameAndType [a (Landroid/os/Parcel;)Lcom/nestlabs/sdk/b;]
+  + Utf8 [()V]
+  + Utf8 [(I)[Lcom/nestlabs/sdk/b;]
+  + Utf8 [(I)[Ljava/lang/Object;]
+  + Utf8 [(Landroid/os/Parcel;)Lcom/nestlabs/sdk/b;]
+  + Utf8 [(Landroid/os/Parcel;)Ljava/lang/Object;]
+  + Utf8 [(Landroid/os/Parcel;Lcom/nestlabs/sdk/b$1;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Creator]
+  + Utf8 [EnclosingMethod]
+  + Utf8 [InnerClasses]
+  + Utf8 [Ljava/lang/Object;Landroid/os/Parcelable$Creator<Lcom/nestlabs/sdk/b;>;]
+  + Utf8 [Signature]
+  + Utf8 [a]
+  + Utf8 [android/os/Parcelable]
+  + Utf8 [android/os/Parcelable$Creator]
+  + Utf8 [com/nestlabs/sdk/b]
+  + Utf8 [com/nestlabs/sdk/b$1]
+  + Utf8 [createFromParcel]
+  + Utf8 [java/lang/Object]
+  + Utf8 [newArray]
+
+Fields (count = 0):
+
+Methods (count = 5):
+  - Method:       <init>()V
+    Access flags: 0x0
+      = b$1()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #9
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/os/Parcel;)Lcom/nestlabs/sdk/b;
+    Access flags: 0x1
+      = public com.nestlabs.sdk.b a(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 4):
+      [0] new #3
+        + Class [com/nestlabs/sdk/b]
+      [3] dup
+      [4] aload_1 v1
+      [5] aconst_null
+      [6] invokespecial #6
+        + Methodref [com/nestlabs/sdk/b.<init> (Landroid/os/Parcel;Lcom/nestlabs/sdk/b$1;)V]
+      [9] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(I)[Lcom/nestlabs/sdk/b;
+    Access flags: 0x1
+      = public com.nestlabs.sdk.b[] a(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 2, stack = 1):
+      [0] iload_1 v1
+      [1] anewarray #3
+        + Class [com/nestlabs/sdk/b]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       newArray(I)[Ljava/lang/Object;
+    Access flags: 0x1001
+      = public synthetic java.lang.Object[] newArray(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] invokevirtual #7
+        + Methodref [com/nestlabs/sdk/b$1.a (I)[Lcom/nestlabs/sdk/b;]
+      [5] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    Access flags: 0x1001
+      = public synthetic java.lang.Object createFromParcel(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokevirtual #8
+        + Methodref [com/nestlabs/sdk/b$1.a (Landroid/os/Parcel;)Lcom/nestlabs/sdk/b;]
+      [5] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 3):
+  + Enclosing method attribute:
+    + Class [com/nestlabs/sdk/b]
+  + Inner classes attribute (count = 2)
+    - InnerClassesInfo:
+      Access flags:  0x8 = static 
+      + Class [com/nestlabs/sdk/b$1]
+    - InnerClassesInfo:
+      Access flags:  0x609 = public static interface 
+      + Class [android/os/Parcelable$Creator]
+      + Class [android/os/Parcelable]
+      + Utf8 [Creator]
+  + Signature attribute:
+    + Utf8 [Ljava/lang/Object;Landroid/os/Parcelable$Creator<Lcom/nestlabs/sdk/b;>;]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/c
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x31
+    = public final class com.nestlabs.sdk.c extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/os/Parcelable]
+
+Constant Pool (count = 79):
+  + Class [android/os/Parcel]
+  + Class [android/os/Parcelable]
+  + Class [android/os/Parcelable$Creator]
+  + Class [com/nestlabs/sdk/c]
+  + Class [com/nestlabs/sdk/c$1]
+  + Class [com/nestlabs/sdk/d]
+  + Class [java/lang/Object]
+  + Class [java/lang/String]
+  + Fieldref [com/nestlabs/sdk/c.CREATOR Landroid/os/Parcelable$Creator;]
+  + Fieldref [com/nestlabs/sdk/c.a Ljava/lang/String;]
+  + Fieldref [com/nestlabs/sdk/c.b J]
+  + Methodref [android/os/Parcel.readLong ()J]
+  + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+  + Methodref [android/os/Parcel.writeLong (J)V]
+  + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+  + Methodref [com/nestlabs/sdk/c.<init> (Landroid/os/Parcel;)V]
+  + Methodref [com/nestlabs/sdk/c.toString ()Ljava/lang/String;]
+  + Methodref [com/nestlabs/sdk/c$1.<init> ()V]
+  + Methodref [com/nestlabs/sdk/d.a (Ljava/lang/Object;)Ljava/lang/String;]
+  + Methodref [java/lang/Object.<init> ()V]
+  + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/os/Parcel;)V]
+  + NameAndType [CREATOR Landroid/os/Parcelable$Creator;]
+  + NameAndType [a (Ljava/lang/Object;)Ljava/lang/String;]
+  + NameAndType [a Ljava/lang/String;]
+  + NameAndType [b J]
+  + NameAndType [equals (Ljava/lang/Object;)Z]
+  + NameAndType [readLong ()J]
+  + NameAndType [readString ()Ljava/lang/String;]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [writeLong (J)V]
+  + NameAndType [writeString (Ljava/lang/String;)V]
+  + Utf8 [()I]
+  + Utf8 [()J]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [(J)V]
+  + Utf8 [(Landroid/os/Parcel;)V]
+  + Utf8 [(Landroid/os/Parcel;I)V]
+  + Utf8 [(Landroid/os/Parcel;Lcom/nestlabs/sdk/c$1;)V]
+  + Utf8 [(Ljava/lang/Object;)Ljava/lang/String;]
+  + Utf8 [(Ljava/lang/Object;)Z]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [<clinit>]
+  + Utf8 [<init>]
+  + Utf8 [CREATOR]
+  + Utf8 [Code]
+  + Utf8 [Creator]
+  + Utf8 [InnerClasses]
+  + Utf8 [J]
+  + Utf8 [Landroid/os/Parcelable$Creator;]
+  + Utf8 [Landroid/os/Parcelable$Creator<Lcom/nestlabs/sdk/c;>;]
+  + Utf8 [Lcom/fasterxml/jackson/annotation/JsonProperty;]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [RuntimeVisibleAnnotations]
+  + Utf8 [Signature]
+  + Utf8 [a]
+  + Utf8 [access_token]
+  + Utf8 [android/os/Parcel]
+  + Utf8 [android/os/Parcelable]
+  + Utf8 [android/os/Parcelable$Creator]
+  + Utf8 [b]
+  + Utf8 [com/nestlabs/sdk/c]
+  + Utf8 [com/nestlabs/sdk/c$1]
+  + Utf8 [com/nestlabs/sdk/d]
+  + Utf8 [describeContents]
+  + Utf8 [equals]
+  + Utf8 [expires_in]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
+  + Utf8 [readLong]
+  + Utf8 [readString]
+  + Utf8 [toString]
+  + Utf8 [value]
+  + Utf8 [writeLong]
+  + Utf8 [writeString]
+  + Utf8 [writeToParcel]
+
+Fields (count = 3):
+  + Field:        a Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String a
+    Class member attributes (count = 1):
+    + Runtime visible annotations attribute:
+      - Annotation [Lcom/fasterxml/jackson/annotation/JsonProperty;]:
+        - Constant element value [value 's']
+          + Utf8 [access_token]
+  + Field:        b J
+    Access flags: 0x2
+      = private long b
+    Class member attributes (count = 1):
+    + Runtime visible annotations attribute:
+      - Annotation [Lcom/fasterxml/jackson/annotation/JsonProperty;]:
+        - Constant element value [value 's']
+          + Utf8 [expires_in]
+  + Field:        CREATOR Landroid/os/Parcelable$Creator;
+    Access flags: 0x19
+      = public static final android.os.Parcelable$Creator CREATOR
+    Class member attributes (count = 1):
+    + Signature attribute:
+      + Utf8 [Landroid/os/Parcelable$Creator<Lcom/nestlabs/sdk/c;>;]
+
+Methods (count = 8):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public c()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #20
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <init>(Landroid/os/Parcel;)V
+    Access flags: 0x2
+      = private c(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 21, locals = 2, stack = 3):
+      [0] aload_0 v0
+      [1] invokespecial #20
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] aload_0 v0
+      [5] aload_1 v1
+      [6] invokevirtual #13
+        + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+      [9] putfield #10
+        + Fieldref [com/nestlabs/sdk/c.a Ljava/lang/String;]
+      [12] aload_0 v0
+      [13] aload_1 v1
+      [14] invokevirtual #12
+        + Methodref [android/os/Parcel.readLong ()J]
+      [17] putfield #11
+        + Fieldref [com/nestlabs/sdk/c.b J]
+      [20] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       describeContents()I
+    Access flags: 0x1
+      = public int describeContents()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 2, locals = 1, stack = 1):
+      [0] iconst_0
+      [1] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       toString()Ljava/lang/String;
+    Access flags: 0x1
+      = public java.lang.String toString()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokestatic #19
+        + Methodref [com/nestlabs/sdk/d.a (Ljava/lang/Object;)Ljava/lang/String;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       equals(Ljava/lang/Object;)Z
+    Access flags: 0x1
+      = public boolean equals(java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 26, locals = 3, stack = 2):
+      [0] aload_1 v1
+      [1] instanceof #4
+        + Class [com/nestlabs/sdk/c]
+      [4] ifeq +20 (target=24)
+      [7] aload_1 v1
+      [8] checkcast #4
+        + Class [com/nestlabs/sdk/c]
+      [11] astore_2 v2
+      [12] aload_2 v2
+      [13] invokevirtual #17
+        + Methodref [com/nestlabs/sdk/c.toString ()Ljava/lang/String;]
+      [16] aload_0 v0
+      [17] invokevirtual #17
+        + Methodref [com/nestlabs/sdk/c.toString ()Ljava/lang/String;]
+      [20] invokevirtual #21
+        + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
+      [23] ireturn
+      [24] iconst_0
+      [25] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       writeToParcel(Landroid/os/Parcel;I)V
+    Access flags: 0x1
+      = public void writeToParcel(android.os.Parcel,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 17, locals = 3, stack = 3):
+      [0] aload_1 v1
+      [1] aload_0 v0
+      [2] getfield #10
+        + Fieldref [com/nestlabs/sdk/c.a Ljava/lang/String;]
+      [5] invokevirtual #15
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [8] aload_1 v1
+      [9] aload_0 v0
+      [10] getfield #11
+        + Fieldref [com/nestlabs/sdk/c.b J]
+      [13] invokevirtual #14
+        + Methodref [android/os/Parcel.writeLong (J)V]
+      [16] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <init>(Landroid/os/Parcel;Lcom/nestlabs/sdk/c$1;)V
+    Access flags: 0x1000
+      = synthetic c(android.os.Parcel,com.nestlabs.sdk.c$1)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #16
+        + Methodref [com/nestlabs/sdk/c.<init> (Landroid/os/Parcel;)V]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <clinit>()V
+    Access flags: 0x8
+      = static void <clinit>()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 0, stack = 2):
+      [0] new #5
+        + Class [com/nestlabs/sdk/c$1]
+      [3] dup
+      [4] invokespecial #18
+        + Methodref [com/nestlabs/sdk/c$1.<init> ()V]
+      [7] putstatic #9
+        + Fieldref [com/nestlabs/sdk/c.CREATOR Landroid/os/Parcelable$Creator;]
+      [10] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 2)
+    - InnerClassesInfo:
+      Access flags:  0x8 = static 
+      + Class [com/nestlabs/sdk/c$1]
+    - InnerClassesInfo:
+      Access flags:  0x609 = public static interface 
+      + Class [android/os/Parcelable$Creator]
+      + Class [android/os/Parcelable]
+      + Utf8 [Creator]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/c$1
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x30
+    = final class com.nestlabs.sdk.c$1 extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/os/Parcelable$Creator]
+
+Constant Pool (count = 35):
+  + Class [android/os/Parcelable]
+  + Class [android/os/Parcelable$Creator]
+  + Class [com/nestlabs/sdk/c]
+  + Class [com/nestlabs/sdk/c$1]
+  + Class [java/lang/Object]
+  + Methodref [com/nestlabs/sdk/c.<init> (Landroid/os/Parcel;Lcom/nestlabs/sdk/c$1;)V]
+  + Methodref [com/nestlabs/sdk/c$1.a (I)[Lcom/nestlabs/sdk/c;]
+  + Methodref [com/nestlabs/sdk/c$1.a (Landroid/os/Parcel;)Lcom/nestlabs/sdk/c;]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/os/Parcel;Lcom/nestlabs/sdk/c$1;)V]
+  + NameAndType [a (I)[Lcom/nestlabs/sdk/c;]
+  + NameAndType [a (Landroid/os/Parcel;)Lcom/nestlabs/sdk/c;]
+  + Utf8 [()V]
+  + Utf8 [(I)[Lcom/nestlabs/sdk/c;]
+  + Utf8 [(I)[Ljava/lang/Object;]
+  + Utf8 [(Landroid/os/Parcel;)Lcom/nestlabs/sdk/c;]
+  + Utf8 [(Landroid/os/Parcel;)Ljava/lang/Object;]
+  + Utf8 [(Landroid/os/Parcel;Lcom/nestlabs/sdk/c$1;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Creator]
+  + Utf8 [EnclosingMethod]
+  + Utf8 [InnerClasses]
+  + Utf8 [Ljava/lang/Object;Landroid/os/Parcelable$Creator<Lcom/nestlabs/sdk/c;>;]
+  + Utf8 [Signature]
+  + Utf8 [a]
+  + Utf8 [android/os/Parcelable]
+  + Utf8 [android/os/Parcelable$Creator]
+  + Utf8 [com/nestlabs/sdk/c]
+  + Utf8 [com/nestlabs/sdk/c$1]
+  + Utf8 [createFromParcel]
+  + Utf8 [java/lang/Object]
+  + Utf8 [newArray]
+
+Fields (count = 0):
+
+Methods (count = 5):
+  - Method:       <init>()V
+    Access flags: 0x0
+      = c$1()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #9
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/os/Parcel;)Lcom/nestlabs/sdk/c;
+    Access flags: 0x1
+      = public com.nestlabs.sdk.c a(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 4):
+      [0] new #3
+        + Class [com/nestlabs/sdk/c]
+      [3] dup
+      [4] aload_1 v1
+      [5] aconst_null
+      [6] invokespecial #6
+        + Methodref [com/nestlabs/sdk/c.<init> (Landroid/os/Parcel;Lcom/nestlabs/sdk/c$1;)V]
+      [9] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(I)[Lcom/nestlabs/sdk/c;
+    Access flags: 0x1
+      = public com.nestlabs.sdk.c[] a(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 2, stack = 1):
+      [0] iload_1 v1
+      [1] anewarray #3
+        + Class [com/nestlabs/sdk/c]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       newArray(I)[Ljava/lang/Object;
+    Access flags: 0x1001
+      = public synthetic java.lang.Object[] newArray(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] invokevirtual #7
+        + Methodref [com/nestlabs/sdk/c$1.a (I)[Lcom/nestlabs/sdk/c;]
+      [5] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    Access flags: 0x1001
+      = public synthetic java.lang.Object createFromParcel(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokevirtual #8
+        + Methodref [com/nestlabs/sdk/c$1.a (Landroid/os/Parcel;)Lcom/nestlabs/sdk/c;]
+      [5] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 3):
+  + Enclosing method attribute:
+    + Class [com/nestlabs/sdk/c]
+  + Inner classes attribute (count = 2)
+    - InnerClassesInfo:
+      Access flags:  0x8 = static 
+      + Class [com/nestlabs/sdk/c$1]
+    - InnerClassesInfo:
+      Access flags:  0x609 = public static interface 
+      + Class [android/os/Parcelable$Creator]
+      + Class [android/os/Parcelable]
+      + Utf8 [Creator]
+  + Signature attribute:
+    + Utf8 [Ljava/lang/Object;Landroid/os/Parcelable$Creator<Lcom/nestlabs/sdk/c;>;]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/R
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x31
+    = public final class com.nestlabs.sdk.R extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 20):
+  + Class [com/nestlabs/sdk/R]
+  + Class [com/nestlabs/sdk/R$attr]
+  + Class [com/nestlabs/sdk/R$id]
+  + Class [com/nestlabs/sdk/R$layout]
+  + Class [java/lang/Object]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + Utf8 [()V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [InnerClasses]
+  + Utf8 [attr]
+  + Utf8 [com/nestlabs/sdk/R]
+  + Utf8 [com/nestlabs/sdk/R$attr]
+  + Utf8 [com/nestlabs/sdk/R$id]
+  + Utf8 [com/nestlabs/sdk/R$layout]
+  + Utf8 [id]
+  + Utf8 [java/lang/Object]
+  + Utf8 [layout]
+
+Fields (count = 0):
+
+Methods (count = 1):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public R()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #6
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 3)
+    - InnerClassesInfo:
+      Access flags:  0x19 = public static final 
+      + Class [com/nestlabs/sdk/R$layout]
+      + Class [com/nestlabs/sdk/R]
+      + Utf8 [layout]
+    - InnerClassesInfo:
+      Access flags:  0x19 = public static final 
+      + Class [com/nestlabs/sdk/R$id]
+      + Class [com/nestlabs/sdk/R]
+      + Utf8 [id]
+    - InnerClassesInfo:
+      Access flags:  0x19 = public static final 
+      + Class [com/nestlabs/sdk/R$attr]
+      + Class [com/nestlabs/sdk/R]
+      + Utf8 [attr]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/R$attr
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x31
+    = public final class com.nestlabs.sdk.R$attr extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 14):
+  + Class [com/nestlabs/sdk/R]
+  + Class [com/nestlabs/sdk/R$attr]
+  + Class [java/lang/Object]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + Utf8 [()V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [InnerClasses]
+  + Utf8 [attr]
+  + Utf8 [com/nestlabs/sdk/R]
+  + Utf8 [com/nestlabs/sdk/R$attr]
+  + Utf8 [java/lang/Object]
+
+Fields (count = 0):
+
+Methods (count = 1):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public R$attr()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #4
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 1)
+    - InnerClassesInfo:
+      Access flags:  0x19 = public static final 
+      + Class [com/nestlabs/sdk/R$attr]
+      + Class [com/nestlabs/sdk/R]
+      + Utf8 [attr]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/R$id
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x31
+    = public final class com.nestlabs.sdk.R$id extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 24):
+  + Integer [2130903040]
+  + Integer [2130903041]
+  + Class [com/nestlabs/sdk/R]
+  + Class [com/nestlabs/sdk/R$id]
+  + Class [java/lang/Object]
+  + Fieldref [com/nestlabs/sdk/R$id.auth_webview I]
+  + Fieldref [com/nestlabs/sdk/R$id.webview_progress I]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [auth_webview I]
+  + NameAndType [webview_progress I]
+  + Utf8 [()V]
+  + Utf8 [<clinit>]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [InnerClasses]
+  + Utf8 [auth_webview]
+  + Utf8 [com/nestlabs/sdk/R]
+  + Utf8 [com/nestlabs/sdk/R$id]
+  + Utf8 [id]
+  + Utf8 [java/lang/Object]
+  + Utf8 [webview_progress]
+
+Fields (count = 2):
+  + Field:        auth_webview I
+    Access flags: 0x9
+      = public static int auth_webview
+  + Field:        webview_progress I
+    Access flags: 0x9
+      = public static int webview_progress
+
+Methods (count = 2):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public R$id()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #8
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <clinit>()V
+    Access flags: 0x8
+      = static void <clinit>()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 0, stack = 1):
+      [0] ldc #1
+        + Integer [2130903040]
+      [2] putstatic #6
+        + Fieldref [com/nestlabs/sdk/R$id.auth_webview I]
+      [5] ldc #2
+        + Integer [2130903041]
+      [7] putstatic #7
+        + Fieldref [com/nestlabs/sdk/R$id.webview_progress I]
+      [10] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 1)
+    - InnerClassesInfo:
+      Access flags:  0x19 = public static final 
+      + Class [com/nestlabs/sdk/R$id]
+      + Class [com/nestlabs/sdk/R]
+      + Utf8 [id]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/R$layout
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x31
+    = public final class com.nestlabs.sdk.R$layout extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 20):
+  + Integer [2130837504]
+  + Class [com/nestlabs/sdk/R]
+  + Class [com/nestlabs/sdk/R$layout]
+  + Class [java/lang/Object]
+  + Fieldref [com/nestlabs/sdk/R$layout.nest_auth_webview_layout I]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [nest_auth_webview_layout I]
+  + Utf8 [()V]
+  + Utf8 [<clinit>]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [InnerClasses]
+  + Utf8 [com/nestlabs/sdk/R]
+  + Utf8 [com/nestlabs/sdk/R$layout]
+  + Utf8 [java/lang/Object]
+  + Utf8 [layout]
+  + Utf8 [nest_auth_webview_layout]
+
+Fields (count = 1):
+  + Field:        nest_auth_webview_layout I
+    Access flags: 0x9
+      = public static int nest_auth_webview_layout
+
+Methods (count = 2):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public R$layout()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #6
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <clinit>()V
+    Access flags: 0x8
+      = static void <clinit>()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 0, stack = 1):
+      [0] ldc #1
+        + Integer [2130837504]
+      [2] putstatic #5
+        + Fieldref [com/nestlabs/sdk/R$layout.nest_auth_webview_layout I]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 1):
+  + Inner classes attribute (count = 1)
+    - InnerClassesInfo:
+      Access flags:  0x19 = public static final 
+      + Class [com/nestlabs/sdk/R$layout]
+      + Class [com/nestlabs/sdk/R]
+      + Utf8 [layout]
+
+_____________________________________________________________________
++ Program class: com/nestlabs/sdk/d
+  Superclass:    java/lang/Object
+  Major version: 0x33
+  Minor version: 0x0
+    = target 1.7
+  Access flags:  0x30
+    = final class com.nestlabs.sdk.d extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 43):
+  + Class [android/text/TextUtils]
+  + Class [com/fasterxml/jackson/core/JsonProcessingException]
+  + Class [com/fasterxml/jackson/databind/ObjectMapper]
+  + Class [com/nestlabs/sdk/d]
+  + Class [java/lang/Class]
+  + Class [java/lang/Object]
+  + Fieldref [com/nestlabs/sdk/d.a Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + Methodref [android/text/TextUtils.isEmpty (Ljava/lang/CharSequence;)Z]
+  + Methodref [com/fasterxml/jackson/databind/ObjectMapper.<init> ()V]
+  + Methodref [com/fasterxml/jackson/databind/ObjectMapper.writeValueAsString (Ljava/lang/Object;)Ljava/lang/String;]
+  + Methodref [java/lang/Class.getSuperclass ()Ljava/lang/Class;]
+  + Methodref [java/lang/Class.toString ()Ljava/lang/String;]
+  + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
+  + NameAndType [<init> ()V]
+  + NameAndType [a Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + NameAndType [getClass ()Ljava/lang/Class;]
+  + NameAndType [getSuperclass ()Ljava/lang/Class;]
+  + NameAndType [isEmpty (Ljava/lang/CharSequence;)Z]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [writeValueAsString (Ljava/lang/Object;)Ljava/lang/String;]
+  + Utf8 [()Ljava/lang/Class;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [(Ljava/lang/CharSequence;)Z]
+  + Utf8 [(Ljava/lang/Object;)Ljava/lang/String;]
+  + Utf8 [([Ljava/lang/String;)Z]
+  + Utf8 [<clinit>]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Lcom/fasterxml/jackson/databind/ObjectMapper;]
+  + Utf8 [a]
+  + Utf8 [android/text/TextUtils]
+  + Utf8 [com/fasterxml/jackson/core/JsonProcessingException]
+  + Utf8 [com/fasterxml/jackson/databind/ObjectMapper]
+  + Utf8 [com/nestlabs/sdk/d]
+  + Utf8 [getClass]
+  + Utf8 [getSuperclass]
+  + Utf8 [isEmpty]
+  + Utf8 [java/lang/Class]
+  + Utf8 [java/lang/Object]
+  + Utf8 [toString]
+  + Utf8 [writeValueAsString]
+
+Fields (count = 1):
+  + Field:        a Lcom/fasterxml/jackson/databind/ObjectMapper;
+    Access flags: 0x1a
+      = private static final com.fasterxml.jackson.databind.ObjectMapper a
+
+Methods (count = 3):
+  + Method:       a(Ljava/lang/Object;)Ljava/lang/String;
+    Access flags: 0x8
+      = static java.lang.String a(java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 20, locals = 2, stack = 2):
+      [0] getstatic #7
+        + Fieldref [com/nestlabs/sdk/d.a Lcom/fasterxml/jackson/databind/ObjectMapper;]
+      [3] aload_0 v0
+      [4] invokevirtual #10
+        + Methodref [com/fasterxml/jackson/databind/ObjectMapper.writeValueAsString (Ljava/lang/Object;)Ljava/lang/String;]
+      [7] areturn
+      [8] astore_1 v1
+      [9] aload_0 v0
+      [10] invokevirtual #13
+        + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
+      [13] invokevirtual #11
+        + Methodref [java/lang/Class.getSuperclass ()Ljava/lang/Class;]
+      [16] invokevirtual #12
+        + Methodref [java/lang/Class.toString ()Ljava/lang/String;]
+      [19] areturn
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (0 -> 7: 8):
+      + Class [com/fasterxml/jackson/core/JsonProcessingException]
+      Code attribute attributes (attribute count = 0):
+  + Method:       a([Ljava/lang/String;)Z
+    Access flags: 0x88
+      = static varargs boolean a(java.lang.String[])
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 41, locals = 5, stack = 2):
+      [0] aload_0 v0
+      [1] ifnonnull +5 (target=6)
+      [4] iconst_0
+      [5] ireturn
+      [6] aload_0 v0
+      [7] astore_1 v1
+      [8] aload_1 v1
+      [9] arraylength
+      [10] istore_2 v2
+      [11] iconst_0
+      [12] istore_3 v3
+      [13] iload_3 v3
+      [14] iload_2 v2
+      [15] ificmpge +24 (target=39)
+      [18] aload_1 v1
+      [19] iload_3 v3
+      [20] aaload
+      [21] astore v4
+      [23] aload v4
+      [25] invokestatic #8
+        + Methodref [android/text/TextUtils.isEmpty (Ljava/lang/CharSequence;)Z]
+      [28] ifeq +5 (target=33)
+      [31] iconst_1
+      [32] ireturn
+      [33] iinc v3, 1
+      [36] goto -23 (target=13)
+      [39] iconst_0
+      [40] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <clinit>()V
+    Access flags: 0x8
+      = static void <clinit>()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 0, stack = 2):
+      [0] new #3
+        + Class [com/fasterxml/jackson/databind/ObjectMapper]
+      [3] dup
+      [4] invokespecial #9
+        + Methodref [com/fasterxml/jackson/databind/ObjectMapper.<init> ()V]
+      [7] putstatic #7
+        + Fieldref [com/nestlabs/sdk/d.a Lcom/fasterxml/jackson/databind/ObjectMapper;]
+      [10] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+

@@ -1,0 +1,21 @@
+com.nestlabs.sdk.Camera: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.Camera$ActivityZone: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.Camera$LastEvent: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.Device: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.Metadata: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.NestAuthActivity
+com.nestlabs.sdk.NestAuthActivity: NestAuthActivity()
+com.nestlabs.sdk.NestConfig: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.NestToken: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.R
+com.nestlabs.sdk.R$attr
+com.nestlabs.sdk.R$id
+com.nestlabs.sdk.R$id: int auth_webview
+com.nestlabs.sdk.R$id: int webview_progress
+com.nestlabs.sdk.R$layout
+com.nestlabs.sdk.R$layout: int nest_auth_webview_layout
+com.nestlabs.sdk.SmokeCOAlarm: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.Structure: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.Structure$ETA: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.Structure$Where: android.os.Parcelable$Creator CREATOR
+com.nestlabs.sdk.Thermostat: android.os.Parcelable$Creator CREATOR
