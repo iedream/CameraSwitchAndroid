@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
     String currentSelectedCameraId;
 
     BeaconManager beaconManager;
+    Region region;
 
     BeaconDetectionManager beaconDetectionManager;
     NestAutorizationManager nestAutorizationManager;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
             beaconManager.getBeaconParsers().add(new BeaconParser().
                     setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"));
             beaconManager.bind(this);
+            region = new Region("beacon", null, null, null);
 
             beaconDetectionManager = new BeaconDetectionManager();
             beaconDetectionManager.beaconDetectionManagerInterface = this;
@@ -112,6 +114,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
         @Override
         public void onReceive(Context context, Intent intent) {
             CameraModel camera = (CameraModel)intent.getSerializableExtra("camera");
+            CameraModel oldModel = getCameraModel(camera.id);
+            cameraList.remove(oldModel);
+            cameraList.add(camera);
             storingManager.writeCameraBeaconsSetting(camera);
         }
     };
@@ -120,6 +125,9 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
         @Override
         public void onReceive(Context context, Intent intent) {
             CameraModel camera = (CameraModel)intent.getSerializableExtra("camera");
+            CameraModel oldModel = getCameraModel(camera.id);
+            cameraList.remove(oldModel);
+            cameraList.add(camera);
             storingManager.writeProximitySetting(camera);
         }
     };
@@ -223,9 +231,10 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
         for (Iterator iterator = cameraList.iterator(); iterator.hasNext();) {
             CameraModel cameraModel = (CameraModel) iterator.next();
             if (cameraModel.beacons != null) {
-                for (Iterator beaconIterator = cameraModel.beacons.iterator(); iterator.hasNext();) {
+                for (Iterator beaconIterator = cameraModel.beacons.iterator(); beaconIterator.hasNext();) {
+                    beaconIterator.next();
                     Set<String> beacons = (Set<String>)cameraModel.beacons;
-                    if (beacons.contains(beaconId)) {
+                    if (beacons.contains(beaconId.toUpperCase())) {
                         allCameras.add(cameraModel);
                     }
                 }
