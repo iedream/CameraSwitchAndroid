@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        beaconManager.unbind(this);
+        //beaconManager.unbind(this);
     }
 
     private BroadcastReceiver cameraUpdateReceiver = new BroadcastReceiver() {
@@ -107,6 +107,11 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
         public void onReceive(Context context, Intent intent) {
             CameraModel camera = (CameraModel)intent.getSerializableExtra("camera");
             nestCameraManager.setCameraState(camera);
+            try {
+                beaconManager.startRangingBeaconsInRegion(region);
+            }catch (RemoteException e) {
+
+            }
         }
     };
 
@@ -118,6 +123,11 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
             cameraList.remove(oldModel);
             cameraList.add(camera);
             storingManager.writeCameraBeaconsSetting(camera);
+            try {
+                beaconManager.startRangingBeaconsInRegion(region);
+            }catch (RemoteException e) {
+
+            }
         }
     };
 
@@ -129,6 +139,11 @@ public class MainActivity extends AppCompatActivity implements BeaconConsumer, G
             cameraList.remove(oldModel);
             cameraList.add(camera);
             storingManager.writeProximitySetting(camera);
+            try {
+                beaconManager.startRangingBeaconsInRegion(region);
+            }catch (RemoteException e) {
+
+            }
         }
     };
 
