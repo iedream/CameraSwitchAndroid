@@ -13,6 +13,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.InputType;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -37,6 +38,8 @@ public class CameraDetailActivity extends Activity {
     ListView beaconTable;
     ArrayList <String> beaconList = new ArrayList<String>();
     AlertDialog.Builder builder;
+    AlertDialog.Builder deleter;
+    int deleteIndex;
     LocalBroadcastManager broadcastManager;
 
     @Override
@@ -65,6 +68,10 @@ public class CameraDetailActivity extends Activity {
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
+
+        deleter = new AlertDialog.Builder(this);
+        deleter.setTitle("Delete Beacon");
+        deleter.setMessage("Are you sure you want to delete this beacon?");
 
         final ArrayAdapter<String> beaconsAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, beaconList);
@@ -95,6 +102,29 @@ public class CameraDetailActivity extends Activity {
             }
         });
 
+        deleter.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                beaconList.remove(deleteIndex);
+                camera.beacons = new HashSet<String>(beaconList);
+                Intent intent = new Intent("UpdateBeacons");
+                intent.putExtra("camera", camera);
+                broadcastManager.sendBroadcast(intent);
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        beaconsAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        });
+
+        deleter.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
         onOffSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +139,14 @@ public class CameraDetailActivity extends Activity {
             @Override
             public void onClick(View view) {
                 builder.show();
+            }
+        });
+
+        beaconTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                deleteIndex = i;
+                deleter.show();
             }
         });
 

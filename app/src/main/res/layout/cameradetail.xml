@@ -156,10 +156,10 @@
         android:id="@+id/addBeaconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Widget"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/beaconTable"
         android:layout_marginLeft="20dp"
+        android:text="Add Beacon"
         app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
